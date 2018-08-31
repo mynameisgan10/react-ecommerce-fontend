@@ -1,6 +1,6 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const path = require('path');
+
 module.exports = {
     mode: "development",
     module: {
