@@ -1,16 +1,19 @@
 import React from 'react';
-import Navbar from "./ui/navbar/navbar";
-import SearchForm from "./ui/searchForm/searchForm";
-import Products from "./ui/products/products"
+import HomePage from "./pages/homePage/homePage";
+import LoginPage from "./pages/loginPage/loginPage";
+import ProductPage from "./pages/productPage/productPage";
+import {Switch, Route} from "react-router-dom";
+
 
 const App = () => {
     return (
-        <div class="container is-fluid">
-            <Navbar />
-            <SearchForm />
-            <Products />
-        </div>
-    );
+        <Switch>
+            <Route exact path="/login" component={LoginPage} />
+            <Route path="/product" component={ProductPage} />
+            <Route path="/" component={HomePage} />
+        </Switch>
+       
+    )
 };
 
 export default App;
