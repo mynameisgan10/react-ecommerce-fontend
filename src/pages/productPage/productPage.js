@@ -4,10 +4,11 @@ import Navbar from '../../ui/navbar/navbar';
 const productPage = () => {
     return (
         <div className="container is-fluid">
-            <section className="hero is-fullheight is-default is-bold">
-        <div className="hero-head">
         <Navbar />
-        </div>
+            <section className="hero is-fullheight is-default is-bold">
+        {/* <div className="hero-head">
+        
+        </div> */}
         <div className="hero-body">
           <div className="container has-text-centered">
             <div className="columns is-vcentered">
