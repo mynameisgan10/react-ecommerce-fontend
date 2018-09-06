@@ -1,0 +1,68 @@
+.popup{
+    display: none;
+    position: absolute;
+    width: 90%;
+    max-width: 700px;
+    padding: 20px;
+    left: 4.5%;
+    background-color: white;
+    border-radius: 12px;
+    top: 3%;
+    z-index: 1000;
+}
+
+.active{
+    display: block;
+}
+
+
+
+/* smallest screen
+    .popup{
+    display: none;
+    position: absolute;
+    width: 90%;
+    max-width: 700px;
+    padding: 20px;
+    left: 4.5%;
+    background-color: lightgrey;
+    border-radius: 12px;
+    top: 3%;
+    z-index: 1000;
+}
+
+*/
+
+/*
+    larger screen
+
+    .popup{
+    display: none;
+    position: absolute;
+    width: 70%;
+    padding: 20px;
+    left: 15%;
+    background-color: lightgrey;
+    border-radius: 12px;
+    top: 5%;
+    z-index: 1000;
+}
+*/
+
+/*
+largest screen
+
+
+.popup{
+    display: none;
+    position: absolute;
+    width: 90%;
+    max-width: 700px;
+    padding: 20px;
+    left: 23%;
+    background-color: lightgrey;
+    border-radius: 12px;
+    top: 3%;
+    z-index: 1000;
+}
+*/
