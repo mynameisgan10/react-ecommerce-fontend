@@ -21,7 +21,7 @@ const Product = () => {
           </div>
         </div>
         <footer className="card-footer">
-        <a href="#" className="card-footer-item has-text-danger"><i class="far fa-heart"></i></a>
+        <a href="#" className="card-footer-item has-text-danger"><i className="far fa-heart"></i></a>
         <a href="#" className="card-footer-item has-text-info"><i className="fas fa-shopping-cart"></i></a>
       </footer>
       </div>

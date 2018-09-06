@@ -1,4 +1,4 @@
-import React from 'react';
+import  React,{Component} from 'react';
 import HomePage from "./pages/homePage/homePage";
 import LoginPage from "./pages/loginPage/loginPage";
 import ProductPage from "./pages/productPage/productPage";
@@ -8,13 +8,22 @@ import Modal from "./utils/modal/modal";
 import {Switch, Route} from "react-router-dom";
 
 
-const App = () => {
-    const Fragment = React.Fragment;
-    return (
+class App extends Component  {
+    state = {
+        showModal: false
+    }
+    modalToggle = () => {
+        this.setState({showModal: !this.state.showModal});
+    }
+
+    render(){
+        const Fragment = React.Fragment;
+        return (
         <Fragment>
-            <Modal />
+            <Modal show={this.state.showModal} toggleModal={this.modalToggle}/>
         <div className="container is-fluid">
         <LoginFormPopUp />
+        {console.log(this.state.showModal)}
         <Navbar />
         <Switch>
             <Route exact path="/login" component={LoginPage} />
@@ -25,6 +34,9 @@ const App = () => {
         </Fragment>
        
     )
+}
 };
 
 export default App;
+
+
