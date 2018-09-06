@@ -5,12 +5,13 @@ import Products from "../../ui/products/products"
 
 
 const homePage = () => {
+    const Fragment = React.Fragment;
     return (
-        <div class="container is-fluid">
-        <Navbar />
-        <SearchForm />
-        <Products />
-    </div>
+        <Fragment>
+            <SearchForm />
+            <Products />
+        </Fragment>
+   
 
     );
 };

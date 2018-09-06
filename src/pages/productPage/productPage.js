@@ -1,14 +1,10 @@
 import React from 'react';
-import Navbar from '../../ui/navbar/navbar';
 
 const productPage = () => {
+  const Fragment = React.Fragment;
     return (
-        <div className="container is-fluid">
-        <Navbar />
-            <section className="hero is-fullheight is-default is-bold">
-        {/* <div className="hero-head">
         
-        </div> */}
+            <section className="hero is-fullheight is-default is-bold">
         <div className="hero-body">
           <div className="container has-text-centered">
             <div className="columns is-vcentered">
@@ -43,8 +39,7 @@ const productPage = () => {
             </div>
           </div>
         </div>
-      </section>
-        </div>
+      </section>  
         
     );
 };
