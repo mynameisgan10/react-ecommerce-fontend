@@ -1,5 +1,6 @@
 import React from 'react';
 import Products from "../../products/products";
+import Follows from "../../follows/follows";
 
 const ProfileNavigations = () => {
     const Fragment = React.Fragment;
@@ -24,7 +25,13 @@ const ProfileNavigations = () => {
             </div>
             <div className="columns">
                 <div className="column is-12">
+                    <div className="columns">
                     <Products selling={false}/>
+                    {/* <Follows />
+                    <Follows />
+                    <Follows /> */}
+                    </div>
+                    
                 </div>
             </div>
         </Fragment>

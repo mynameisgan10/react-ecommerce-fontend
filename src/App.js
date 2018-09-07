@@ -3,6 +3,7 @@ import HomePage from "./pages/homePage/homePage";
 import LoginPage from "./pages/loginPage/loginPage";
 import ProductPage from "./pages/productPage/productPage";
 import ProfilePage from "./pages/profilePage/profilePage";
+import SellPage from "./pages/sellPage/sellPage";
 import Navbar from "./ui/navbar/navbar";
 import LoginFormPopUp from "./ui/loginFormPopup/loginFormPopup";
 import Modal from "./utils/modal/modal";
@@ -42,6 +43,7 @@ class App extends Component  {
             <Route exact path="/login" component={LoginPage} />
             <Route path="/product" component={ProductPage} />
             <Route path="/profile" component={ProfilePage} />
+            <Route path="/sell" component={SellPage} />
             <Route path="/" component={HomePage} />
         </Switch>
         </div>

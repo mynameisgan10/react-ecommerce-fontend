@@ -14,7 +14,9 @@ const ProfileSummary = () => {
                 <div className="content">
                     <p>
                         <strong>UserName</strong>
+                        <br/>
                         <small>@username</small>
+                        <br/>
                         <small>31m</small>
                         <br/>
                         Verification information

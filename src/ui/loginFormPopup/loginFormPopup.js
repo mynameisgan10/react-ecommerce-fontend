@@ -10,7 +10,7 @@ const LoginFormPopup = (props) => {
     return (
         <div className={styles.join(" ")}>
             <p className="control">
-                <a className="button is-fullwidth is-info">
+                <a className="button is-fullwidth is-link">
                     <span className="icon is-small">
                         <i className="fab fa-facebook"></i>
                     </span>
