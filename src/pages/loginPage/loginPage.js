@@ -4,12 +4,7 @@ import NavBar from "../../ui/navbar/navbar";
 
 const loginPage = () => {
     const Fragment = React.Fragment;
-    return (
-        
-            <LoginForm />
-       
-       
-    );
+    return (<LoginForm/>);
 };
 
 export default loginPage;

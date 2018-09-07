@@ -3,7 +3,7 @@ import Product from "./product/product";
 
 
 const Products = () => {
-    const array = [1,1,1,1,1,1,1,1,1,1]
+    const array = [1,1,1,1,1,1,1,1]
     const output = array.map(item => {
         return (<Product />)
     })
