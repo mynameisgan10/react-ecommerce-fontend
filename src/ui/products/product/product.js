@@ -19,7 +19,7 @@ const Product = (props) => {
                 <i className="far fa-heart"></i>
             </a>
             <a href="#" className="card-footer-item has-text-info">
-                <i className="fas fa-shopping-cart"></i>
+                <i className="fas fa-bookmark"></i>
             </a>
         </Fragment>
         )
