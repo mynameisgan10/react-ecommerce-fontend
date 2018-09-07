@@ -8,7 +8,7 @@ const Modal = (props) => {
         // styles = [];
     }
     return (
-        <div className={styles.join(" ")} onClick={props.toggleModal}>
+        <div className={styles.join(" ")} onClick={props.toggleModal} onWheel={(e) => e.preventDefault()}>
             {props.children}
         </div>
     );

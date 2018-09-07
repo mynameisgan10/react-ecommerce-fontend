@@ -5,6 +5,7 @@ import ProductPage from "./pages/productPage/productPage";
 import Navbar from "./ui/navbar/navbar";
 import LoginFormPopUp from "./ui/loginFormPopup/loginFormPopup";
 import Modal from "./utils/modal/modal";
+import Styles from "./App.css";
 import {Switch, Route} from "react-router-dom";
 
 
@@ -15,16 +16,26 @@ class App extends Component  {
     modalToggle = () => {
         this.setState({showModal: !this.state.showModal});
     }
+    onScroll = (e) =>{
+        if(this.state.showModal){
+            e.preventDefault();
+        }
+        console.log("scrolling");
+    }
 
     render(){
         const Fragment = React.Fragment;
+        const styles = ["container","is-fluid"];
+        if(this.state.showModal){
+            styles.push(Styles.scrollLock)
+        }
         return (
         <Fragment>
             <Modal show={this.state.showModal} toggleModal={this.modalToggle}/>
-        <div className="container is-fluid">
-        <LoginFormPopUp />
+        <div className={styles.join(" ")} onWheel={this.onScroll}>
+        <LoginFormPopUp show={this.state.showModal}/>
         {console.log(this.state.showModal)}
-        <Navbar />
+        <Navbar login={this.modalToggle}/>
         <Switch>
             <Route exact path="/login" component={LoginPage} />
             <Route path="/product" component={ProductPage} />

@@ -1,5 +1,5 @@
 .popup{
-    display: none;
+    display: block;
     position: absolute;
     width: 90%;
     max-width: 700px;
@@ -7,13 +7,17 @@
     left: 4.5%;
     background-color: white;
     border-radius: 12px;
-    top: 3%;
-    z-index: 1000;
+    top: -100vh;
+    z-index: 10000;
+    opacity: 0;
+    transition: top 0.5s ,opacity 0.5s; 
 }
 
 .active{
-    display: block;
+    top: 3%;
+    opacity: 1;
 }
+
 
 
 

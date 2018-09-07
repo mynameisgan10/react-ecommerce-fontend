@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 
 
-const navbar = () => {
+const navbar = (props) => {
     return (
         <nav className="navbar is-transparent">
         <div className="navbar-brand">
@@ -28,8 +28,9 @@ const navbar = () => {
                   </a>
                 </p>
                 <p className="control">
-                  <a className="button is-primary is-medium" href="">
-                    <Link to="/login" style={{color:"white"}}><span>Login</span></Link>
+                  <a className="button is-primary is-medium">
+                    {/* <Link to="/login" style={{color:"white"}}><span>Login</span></Link> */}
+                    <span style={{color:"white"}} onClick={props.login}>Login</span>
                   </a>
                 </p>
               </div>

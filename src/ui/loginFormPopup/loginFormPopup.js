@@ -2,8 +2,11 @@ import React from 'react';
 import FormInput from "../formInput/formInput";
 import Styles from "./loginFormPopup.css";
 
-const LoginFormPopup = () => {
-    const styles = ["container",Styles.popup, Styles.active];
+const LoginFormPopup = (props) => {
+    const styles = ["container",Styles.popup];
+    if(props.show){
+        styles.push(Styles.active);
+    }
     return (
         <div className={styles.join(" ")}>
             <a className="button is-fullwidth is-info">Login with Facebook</a>
