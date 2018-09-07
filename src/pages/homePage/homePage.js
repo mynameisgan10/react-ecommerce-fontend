@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from "../../ui/navbar/navbar"
 import SearchForm from "../../ui/searchForm/searchForm";
 import Products from "../../ui/products/products"
 
@@ -8,7 +7,7 @@ const homePage = () => {
     return (
         <Fragment>
             <SearchForm/>
-            <Products/>
+            <Products selling/>
         </Fragment>
 
     );

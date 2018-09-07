@@ -2,10 +2,10 @@ import React from 'react';
 import Product from "./product/product";
 
 
-const Products = () => {
+const Products = (props) => {
     const array = [1,1,1,1,1,1,1,1]
     const output = array.map(item => {
-        return (<Product />)
+        return (<Product selling={props.selling}/>)
     })
     return (
         <div className="columns is-multiline">

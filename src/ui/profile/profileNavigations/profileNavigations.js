@@ -24,7 +24,7 @@ const ProfileNavigations = () => {
             </div>
             <div className="columns">
                 <div className="column is-12">
-                    <Products/>
+                    <Products selling={false}/>
                 </div>
             </div>
         </Fragment>
