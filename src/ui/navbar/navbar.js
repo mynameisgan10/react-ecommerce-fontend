@@ -3,19 +3,17 @@ import {Link} from 'react-router-dom';
 
 const navbar = (props) => {
     let button = (
-        <span
-            style={{
+        <span style={{
                 color: "white"
-            }}
-            onClick={props.login}>Login</span>
+            }}>Login</span>
     )
 
     if (props.authState) {
-        button = (<span
-            style={{
-                color: "white"
-            }}
-            onClick={props.login}>Sell</span>)
+        button = (
+            <span style={{
+                    color: "white"
+                }}>Sell</span>
+        )
     }
     return (
         <nav className="navbar is-transparent">
@@ -47,7 +45,7 @@ const navbar = (props) => {
                                 </a>
                             </p>
                             <p className="control">
-                                <a className="button is-primary is-medium">
+                                <a className="button is-primary is-medium" onClick={props.login}>
                                     {/* <Link to="/login" style={{color:"white"}}><span>Login</span></Link> */}
                                     {button}
                                 </a>

@@ -1,8 +1,9 @@
 import React from 'react';
 
 const ProfileSummary = () => {
+    const Fragment = React.Fragment;
     return (
-
+        <Fragment>
         <article className="media">
             <div className="media-left">
                 <figure class="image is-128x128">
@@ -42,10 +43,12 @@ const ProfileSummary = () => {
                         </a>
                     </div>
                 </nav>
-
             </div>
-
         </article>
+        <div style={{marginTop:"10px"}}>
+            <p>Some short description about the life</p>
+        </div>
+        </Fragment>
 
     );
 };
