@@ -19,7 +19,32 @@
 }
 
 
+@media screen and (min-width: 1080px) {
+    .popup{
+        left: 17%;
+    }
+  }
 
+  @media screen and (min-width: 1230px) {
+    .popup{
+        left: 18%;
+    }
+  }
+  @media screen and (min-width: 1300px) {
+    .popup{
+        left: 19%;
+    }
+  }
+  @media screen and (min-width: 1350px) {
+    .popup{
+        left: 22%;
+    }
+  }
+  @media screen and (min-width: 1400px) {
+    .popup{
+        left: 23%;
+    }
+  }
 
 /* smallest screen
     .popup{
