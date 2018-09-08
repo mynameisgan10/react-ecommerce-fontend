@@ -10,15 +10,15 @@ const SellPage = () => {
                     <div className="columns is-centered">
                         <div className="column is-6">
                             <div
-                                className={["box", Styles
+                                className={["box","has-text-centered", Styles
                                     .dropArea]
                                     .join(" ")}>
                                     <h1 className="has-text-weight-bold">Drag and drop the images here</h1>
                                 <a className={["button", "is-primary", "is-fullwidth",Styles.uploadButton].join(" ")}>
                                     <span className="icon">
-                                        <i className="fab fa-twitter"/>
+                                        <i className="fas fa-upload"/>
                                     </span>
-                                    <span>Twitter</span>
+                                    <span>Upload</span>
                                 </a>
                             </div>
                         </div>

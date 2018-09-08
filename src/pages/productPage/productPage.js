@@ -41,7 +41,7 @@ const productPage = () => {
             </div>
             <Ad/>
             <div className="has-text-centered">
-                <h1 className="has-text-weight-bold">Suggestions</h1>
+                <h1 className="has-text-weight-bold is-size-4">Suggestions</h1>
             </div>
             <Suggestions/>
         </section>
