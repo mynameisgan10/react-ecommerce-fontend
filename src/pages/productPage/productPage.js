@@ -1,12 +1,14 @@
 import React from 'react';
 import Suggestions from "../../ui/suggestions/suggestions";
 import Carousel from "../../ui/carousel/carousel";
+import Ad from "../../ui/ad/ad";
 
 const productPage = () => {
     const Fragment = React.Fragment;
     return (
 
         <section className="hero is-default is-bold">
+            <Ad/>
             <div className="hero-body">
                 <div className="container has-text-centered">
                     <div className="columns is-vcentered">
@@ -36,6 +38,10 @@ const productPage = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <Ad/>
+            <div className="has-text-centered">
+                <h1 className="has-text-weight-bold">Suggestions</h1>
             </div>
             <Suggestions/>
         </section>
