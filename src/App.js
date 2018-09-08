@@ -14,7 +14,7 @@ import {Switch, Route} from "react-router-dom";
 class App extends Component  {
     state = {
         showModal: false,
-        login: true
+        login: false
     }
     modalToggle = () => {
         this.setState({showModal: !this.state.showModal});
@@ -38,7 +38,7 @@ class App extends Component  {
         <div className={styles.join(" ")} onWheel={this.onScroll}>
         <LoginFormPopUp show={this.state.showModal}/>
         {console.log(this.state.showModal)}
-        <Navbar login={this.modalToggle} authState={this.state.login}/>
+        <Navbar login={this.modalToggle} signUp={this.modalToggle} authState={this.state.login}/>
         <Switch>
             <Route exact path="/login" component={LoginPage} />
             <Route path="/product" component={ProductPage} />

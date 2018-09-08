@@ -5,7 +5,7 @@ const navbar = (props) => {
     const Fragment = React.Fragment;
     let signUpButton = (
         <p className="control">
-            <a className="bd-tw-button button is-medium">
+            <a className="bd-tw-button button is-medium" onClick={props.signUp}>
                 <span>
                     Signup
                 </span>
