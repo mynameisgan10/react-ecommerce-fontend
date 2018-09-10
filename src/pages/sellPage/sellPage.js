@@ -1,58 +1,37 @@
 import React from 'react';
-import DropArea from "../../ui/dropArea/dropArea";
-import Styles from "./sellPage.css";
+import Photos from "./photos/photos";
+import Categories from "./categories/categories";
 
 const SellPage = () => {
     return (
-        <section className="hero  is-fullheight">
-            <h1>Photos</h1>
+        <section className="hero">
+            {/* <h1 className="is-size-3">Photos</h1>
+            <span className="icon is-large">
+                <i className="fas fa-arrow-left"></i>
+            </span> */
+            }
+            <nav className="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
+                <ul>
+                    <li>
+                        <a>Photos</a>
+                    </li>
+                    <li>
+                        <a>Category</a>
+                    </li>
+                    <li>
+                        <a>Components</a>
+                    </li>
+                    <li className="is-active">
+                        <a aria-current="page">Breadcrumb</a>
+                    </li>
+                </ul>
+            </nav>
             <div className="hero-body">
                 <div className="container">
                     <div className="columns is-centered">
-                        <div className="column is-6">
-                            <DropArea />
-                        </div>
-                        <div className="column is-6">
-                            <div
-                                className={["box", Styles
-                                    .imageContainer]
-                                    .join(" ")}>
-                                <div className="columns is-multiline">
-                                    <div className="column is-6">
-                                        <div
-                                            className={["box", Styles
-                                                .itemImage]
-                                                .join(" ")}>
-                                            <h1>Test</h1>
-                                        </div>
-                                    </div>
-                                    <div className="column is-6">
-                                        <div
-                                            className={["box", Styles
-                                                .itemImage]
-                                                .join(" ")}>
-                                            <h1>Test</h1>
-                                        </div>
-                                    </div>
-                                    <div className="column is-6">
-                                        <div
-                                            className={["box", Styles
-                                                .itemImage]
-                                                .join(" ")}>
-                                            <h1>Test</h1>
-                                        </div>
-                                    </div>
-                                    <div className="column is-6">
-                                        <div
-                                            className={["box", Styles
-                                                .itemImage]
-                                                .join(" ")}>
-                                            <h1>Test</h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <Photos />
+                        {/* <Categories /> */}
+                        
                     </div>
                 </div>
             </div>
