@@ -1,4 +1,5 @@
 import React from 'react';
+import DropArea from "../../ui/dropArea/dropArea";
 import Styles from "./sellPage.css";
 
 const SellPage = () => {
@@ -9,18 +10,7 @@ const SellPage = () => {
                 <div className="container">
                     <div className="columns is-centered">
                         <div className="column is-6">
-                            <div
-                                className={["box","has-text-centered", Styles
-                                    .dropArea]
-                                    .join(" ")}>
-                                    <h1 className="has-text-weight-bold">Drag and drop the images here</h1>
-                                <a className={["button", "is-primary", "is-fullwidth",Styles.uploadButton].join(" ")}>
-                                    <span className="icon">
-                                        <i className="fas fa-upload"/>
-                                    </span>
-                                    <span>Upload</span>
-                                </a>
-                            </div>
+                            <DropArea />
                         </div>
                         <div className="column is-6">
                             <div

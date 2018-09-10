@@ -14,7 +14,8 @@ import {Switch, Route} from "react-router-dom";
 class App extends Component  {
     state = {
         showModal: false,
-        login: false
+        login: false,
+        signUp: false
     }
     modalToggle = () => {
         this.setState({showModal: !this.state.showModal});
@@ -24,6 +25,11 @@ class App extends Component  {
             e.preventDefault();
         }
         console.log("scrolling");
+    }
+    signUpToggle = () => {
+        this.setState({
+            signUp: !this.state.signUp
+        })
     }
 
     render(){
@@ -36,7 +42,7 @@ class App extends Component  {
         <Fragment>
             <Modal show={this.state.showModal} toggleModal={this.modalToggle}/>
         <div className={styles.join(" ")} onWheel={this.onScroll}>
-        <LoginFormPopUp show={this.state.showModal}/>
+        <LoginFormPopUp show={this.state.showModal} onSignUp={this.signUpToggle} signUp={this.state.signUp}/>
         {console.log(this.state.showModal)}
         <Navbar login={this.modalToggle} signUp={this.modalToggle} authState={this.state.login}/>
         <Switch>

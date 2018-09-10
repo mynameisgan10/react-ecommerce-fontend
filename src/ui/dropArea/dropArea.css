@@ -1,0 +1,9 @@
+.dropArea{
+    min-height:425px;
+    position: relative;
+    background-color: lightgrey;
+    border:6px dashed black;
+}
+.uploadButton{
+    margin-top: 60%;
+}

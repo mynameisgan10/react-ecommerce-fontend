@@ -4,8 +4,20 @@ import Styles from "./loginFormPopup.css";
 
 const LoginFormPopup = (props) => {
     const styles = ["container", Styles.popup];
+    let cfmPassword = null;
     if (props.show) {
         styles.push(Styles.active);
+    }
+    if(props.signUp){
+        cfmPassword = (
+            <FormInput
+                label="Confirm Password"
+                success={false}
+                placeholder="Confirm Password"
+                leftIcon="fas fa-key"
+                rightIcon="fas fa-exclamation-triangle"
+                message="password too short"/>
+        )
     }
     return (
         <div className={styles.join(" ")}>
@@ -31,21 +43,15 @@ const LoginFormPopup = (props) => {
                 leftIcon="fas fa-key"
                 rightIcon="fas fa-exclamation-triangle"
                 message="password too short"/>
-            <FormInput
-                label="Confirm Password"
-                success={false}
-                placeholder="Confirm Password"
-                leftIcon="fas fa-key"
-                rightIcon="fas fa-exclamation-triangle"
-                message="password too short"/>
-            <a className="button is-fullwidth is-success">Sign Up</a>
+            {cfmPassword}
+            <a className="button is-fullwidth is-success">{props.signUp ? "Signup" : "Login"}</a>
             <div
                 className="has-text-centered"
                 style={{
                     marginTop: "10px"
                 }}>
                 <h3>
-                    Don't have an account?<a href="/"> Sign up</a>
+                    {props.signUp ? "Already have an account?" : "Don't have an account?"}<a onClick={props.onSignUp}> {props.signUp ? "Login" : "Signup"}</a>
                 </h3>
             </div>
         </div>

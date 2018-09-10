@@ -38,13 +38,13 @@ const navbar = (props) => {
     return (
         <nav className="navbar is-transparent">
             <div className="navbar-brand">
-                <a className="navbar-item" href="https://bulma.io">
-                    <Link to="/"><img
-                        src="https://bulma.io/images/bulma-logo.png"
-                        alt="Bulma: a modern CSS framework based on Flexbox"
-                        width={112}
-                        height={28}/></Link>
-                </a>
+                {/* <a  href="https://bulma.io"> */}
+                <Link to="/" className="navbar-item"><img
+                    src="https://bulma.io/images/bulma-logo.png"
+                    alt="Bulma: a modern CSS framework based on Flexbox"
+                    width={112}
+                    height={28}/></Link>
+                {/* </a> */}
                 <div
                     className="navbar-burger burger"
                     data-target="navbarExampleTransparentExample">

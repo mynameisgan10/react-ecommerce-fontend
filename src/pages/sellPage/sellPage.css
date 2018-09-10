@@ -1,15 +1,7 @@
-.dropArea{
-    min-height:400px;
-    position: relative;
-    background-color: lightgrey;
-    border:6px dashed black;
-}
+
 .itemImage{
     min-height: 180px;
 }
 .imageContainer{
     min-height: 420px;
-}
-.uploadButton{
-    margin-top: 60%;
 }
