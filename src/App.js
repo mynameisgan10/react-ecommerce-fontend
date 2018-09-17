@@ -40,10 +40,11 @@ class App extends Component  {
         }
         return (
         <Fragment>
-            <Modal show={this.state.showModal} toggleModal={this.modalToggle}/>
+            <Modal show={this.state.showModal} toggleModal={this.modalToggle} onSignUp={this.signUpToggle} signUp={this.state.signUp}>
+            <LoginFormPopUp show={this.state.showModal} onSignUp={this.signUpToggle} signUp={this.state.signUp}/>
+            </Modal>
         <div className={styles.join(" ")} onWheel={this.onScroll}>
-        <LoginFormPopUp show={this.state.showModal} onSignUp={this.signUpToggle} signUp={this.state.signUp}/>
-        {console.log(this.state.showModal)}
+        
         <Navbar login={this.modalToggle} signUp={this.modalToggle} authState={this.state.login}/>
         <Switch>
             <Route exact path="/login" component={LoginPage} />

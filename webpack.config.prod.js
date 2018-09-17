@@ -1,6 +1,9 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 module.exports = {
+  output:{
+    publicPath: '/'
+  },
     module: {
       rules: [
         {

@@ -6,8 +6,13 @@ const homePage = () => {
     const Fragment = React.Fragment;
     return (
         <Fragment>
-            <SearchForm/>
-            <Products selling/>
+            <div className="columns is-centered">
+                <div className="column is-12">
+                    <SearchForm/>
+                    <Products selling="selling"/>
+                </div>
+            </div>
+
         </Fragment>
 
     );

@@ -1,17 +1,27 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Styles from "./modal.css";
+import LoginFormPopUp from "../../ui/loginFormPopup/loginFormPopup";
 
-const Modal = (props) => {
-    let styles = [];
-    if(props.show){
-        styles.push(Styles.modal);
-        // styles = [];
+class Modal extends Component {
+
+    render() {
+        let styles = [];
+        if (this.props.show) {
+            styles.push(Styles.modal);
+            // styles = [];
+        }
+        const Fragment = React.Fragment;
+        return (
+
+            <div
+                className={styles.join(" ")}
+                onClick={this.props.toggleModal}
+                onWheel={(e) => e.preventDefault()}>
+                {this.props.children}
+            </div>
+
+        );
     }
-    return (
-        <div className={styles.join(" ")} onClick={props.toggleModal} onWheel={(e) => e.preventDefault()}>
-            {props.children}
-        </div>
-    );
 };
 
 export default Modal;

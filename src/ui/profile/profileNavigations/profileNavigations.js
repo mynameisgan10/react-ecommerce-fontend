@@ -1,6 +1,7 @@
 import React from 'react';
 import Products from "../../products/products";
 import Follows from "../../follows/follows";
+// import ProfileNavigations from "./ProfileNavigations.css";
 
 const ProfileNavigations = () => {
     const Fragment = React.Fragment;

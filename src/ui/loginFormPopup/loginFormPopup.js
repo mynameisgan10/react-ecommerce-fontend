@@ -5,6 +5,7 @@ import Styles from "./loginFormPopup.css";
 const LoginFormPopup = (props) => {
     const styles = ["container", Styles.popup];
     let cfmPassword = null;
+    
     if (props.show) {
         styles.push(Styles.active);
     }
@@ -20,7 +21,7 @@ const LoginFormPopup = (props) => {
         )
     }
     return (
-        <div className={styles.join(" ")}>
+        <div className={styles.join(" ")} onClick={(e) => e.stopPropagation()}>
             <p className="control">
                 <a className="button is-fullwidth is-link">
                     <span className="icon is-small">

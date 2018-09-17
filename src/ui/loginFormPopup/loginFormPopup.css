@@ -1,97 +1,19 @@
 .popup{
-    display: block;
-    position: absolute;
+    display: none;
+    position: relative;
     width: 90%;
-    max-width: 700px;
+    max-width: 1000px;
     padding: 20px;
-    left: 4.5%;
+    max-height: 800px;
     background-color: white;
     border-radius: 12px;
-    top: -100vh;
-    z-index: 10000;
     opacity: 0;
     transition: top 0.5s ,opacity 0.5s; 
 }
 
 .active{
-    top: 3%;
+    top:0;
     opacity: 1;
+    margin-top: 100px;
+    display: block;
 }
-
-
-@media screen and (min-width: 1080px) {
-    .popup{
-        left: 17%;
-    }
-  }
-
-  @media screen and (min-width: 1230px) {
-    .popup{
-        left: 18%;
-    }
-  }
-  @media screen and (min-width: 1300px) {
-    .popup{
-        left: 19%;
-    }
-  }
-  @media screen and (min-width: 1350px) {
-    .popup{
-        left: 22%;
-    }
-  }
-  @media screen and (min-width: 1400px) {
-    .popup{
-        left: 23%;
-    }
-  }
-
-/* smallest screen
-    .popup{
-    display: none;
-    position: absolute;
-    width: 90%;
-    max-width: 700px;
-    padding: 20px;
-    left: 4.5%;
-    background-color: lightgrey;
-    border-radius: 12px;
-    top: 3%;
-    z-index: 1000;
-}
-
-*/
-
-/*
-    larger screen
-
-    .popup{
-    display: none;
-    position: absolute;
-    width: 70%;
-    padding: 20px;
-    left: 15%;
-    background-color: lightgrey;
-    border-radius: 12px;
-    top: 5%;
-    z-index: 1000;
-}
-*/
-
-/*
-largest screen
-
-
-.popup{
-    display: none;
-    position: absolute;
-    width: 90%;
-    max-width: 700px;
-    padding: 20px;
-    left: 23%;
-    background-color: lightgrey;
-    border-radius: 12px;
-    top: 3%;
-    z-index: 1000;
-}
-*/
