@@ -1,6 +1,7 @@
 import React from 'react';
 import Photos from "./photos/photos";
 import Categories from "./categories/categories";
+import Description from "./description/description";
 
 const SellPage = () => {
     return (
@@ -13,25 +14,25 @@ const SellPage = () => {
             <nav className="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
                 <ul>
                     <li>
+                        <a>Home</a>
+                    </li>
+                    <li>
                         <a>Photos</a>
                     </li>
                     <li>
                         <a>Category</a>
                     </li>
-                    <li>
-                        <a>Components</a>
-                    </li>
                     <li className="is-active">
-                        <a aria-current="page">Breadcrumb</a>
+                        <a aria-current="page">Description</a>
                     </li>
                 </ul>
             </nav>
             <div className="hero-body">
                 <div className="container">
                     <div className="columns is-centered">
-                        <Photos />
+                        {/* <Photos /> */}
                         {/* <Categories /> */}
-                        
+                        <Description />
                     </div>
                 </div>
             </div>
