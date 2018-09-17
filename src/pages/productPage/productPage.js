@@ -11,7 +11,7 @@ const productPage = () => {
             <Ad/>
             <div className="hero-body">
                 <div className="container has-text-centered">
-                    <div className="columns is-vcentered">
+                    <div className="columns is-vcentered is-multiline">
                         <Carousel
                             items={[
                                 1,
@@ -24,6 +24,21 @@ const productPage = () => {
                         <div className="column is-6">
                             <h1 className="title is-2">
                                 iPhone X
+                            </h1>
+                            <h2 className="subtitle is-4">
+                                this is the new iphone X<br/>
+                                It is the biggest leap forward
+                            </h2>
+                            <br/>
+                            <p className="has-text-centered">
+                                <a className="button is-medium is-success">
+                                    $9,000
+                                </a>
+                            </p>
+                        </div>
+                        <div className="column is-6">
+                            <h1 className="title is-2">
+                                Description
                             </h1>
                             <h2 className="subtitle is-4">
                                 this is the new iphone X<br/>
