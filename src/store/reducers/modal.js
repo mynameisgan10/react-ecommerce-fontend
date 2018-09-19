@@ -2,7 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 import * as utilities from "../utilities";
 
 const initialState = {
-    showModal: true,
+    showModal: false,
     signUp: false
 };
 
