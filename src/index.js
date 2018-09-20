@@ -4,10 +4,16 @@ import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
 import App from "./App";
 import modal from "./store/reducers/modal";
-import {createStore,compose} from 'redux';
+import user from "./store/reducers/user";
+import {createStore,compose, applyMiddleware, combineReducers} from 'redux';
+import thunk from 'redux-thunk';
 
+const reducers = combineReducers({
+    modal: modal,
+    user:user
+});
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(modal,composeEnhancers());
+const store = createStore(reducers,composeEnhancers(applyMiddleware(thunk)));
 
 const app = (
     <Provider store={store}>

@@ -65,8 +65,8 @@ class App extends Component  {
 
 const mapStateToProps = state => {
     return {
-        showModal: state.showModal,
-        signUp: state.signUp
+        showModal: state.modal.showModal,
+        signUp: state.modal.signUp
     }
 }
 

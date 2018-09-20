@@ -11,7 +11,9 @@ const formInput = (props) => {
             <div className="control has-icons-left has-icons-right">
                 <input
                     className={["input", status].join(" ")}
-                    type="text"
+                    type={props.type}
+                    value={props.value}
+                    onInput={props.onFormInput}
                     placeholder={props.placeHolder}
                     defaultValue="bulma"/>
                 <span className="icon is-small is-left">

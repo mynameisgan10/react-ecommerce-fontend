@@ -7,9 +7,11 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.USER_LOGIN:
+        case actionTypes.USER_LOGIN_SUCCESS:
             return {authenticated: true}
         case actionTypes.USER_LOGOUT:
+            return {authenticated: false}
+        case actionTypes.USER_LOGIN_FAIL:
             return {authenticated: false}
 
     }
