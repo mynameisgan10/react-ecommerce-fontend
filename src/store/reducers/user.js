@@ -13,7 +13,10 @@ const reducer = (state = initialState, action) => {
             return {authenticated: false}
         case actionTypes.USER_LOGIN_FAIL:
             return {authenticated: false}
-
+        case actionTypes.USER_SIGNUP_SUCCESS: 
+            return {authenticated: true}
+        case actionTypes.USER_SIGNUP_FAIL:
+            return {authenticated: false}
     }
     return state
 }

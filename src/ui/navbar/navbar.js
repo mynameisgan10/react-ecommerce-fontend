@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from "react-redux";
 
 const navbar = (props) => {
     const Fragment = React.Fragment;
@@ -22,7 +23,7 @@ const navbar = (props) => {
         </Fragment>
     )
 
-    if (props.authState) {
+    if (props.authenticated) {
         signUpButton = null
         button = (
             <Fragment>
@@ -79,4 +80,10 @@ const navbar = (props) => {
     );
 };
 
-export default navbar;
+const mapStateToProps = state => {
+    return {
+        authenticated: state.user.authenticated
+    }
+}
+
+export default connect(mapStateToProps,null)(navbar);

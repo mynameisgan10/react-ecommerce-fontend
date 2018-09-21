@@ -7,6 +7,6 @@ export {
 
 export {
     user_login,
-    user_login_fail,
-    user_logout
+    user_logout,
+    user_signup
 } from "./user"

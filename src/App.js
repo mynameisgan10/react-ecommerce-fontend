@@ -44,7 +44,7 @@ class App extends Component  {
         return (
         <Fragment>
             <Modal show={this.props.showModal} toggleModal={this.props.toggleModal}>
-            <LoginFormPopUp show={this.props.showModal} onSignUp={this.props.toggleSignup} signUp={this.props.signUp}/>
+            <LoginFormPopUp show={this.props.showModal} toggleSignUp={this.props.toggleSignup} signUp={this.props.signUp}/>
             </Modal>
         <div className={styles.join(" ")} onWheel={this.onScroll}>
         

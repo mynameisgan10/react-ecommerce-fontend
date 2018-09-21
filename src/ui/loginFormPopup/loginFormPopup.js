@@ -23,6 +23,20 @@ class LoginFormPopup extends Component {
     onConfirmPasswordInput = (event) => {
         this.setState({confirmpassword: event.target.value})
     }
+    onFormSubmit = () => {
+        if(this.props.signUp){
+            this.props.onSignUp({
+                username: this.state.username,
+                password: this.state.password,
+                confirmpassword: this.state.confirmpassword
+            })
+        }else{
+            this.props.onLogin({
+                username: this.state.username,
+                password: this.state.password
+            })
+        }
+    }
 
     render() {
         const styles = ["container", Styles.popup];
@@ -76,7 +90,7 @@ class LoginFormPopup extends Component {
                     leftIcon="fas fa-key"
                     rightIcon="fas fa-exclamation-triangle"
                     message="password too short"/> {cfmPassword}
-                <a className="button is-fullwidth is-success" onClick={() => this.props.onLogin(this.state)}>{
+                <a className="button is-fullwidth is-success" onClick={this.onFormSubmit}>{
                         this.props.signUp
                             ? "Signup"
                             : "Login"
@@ -91,7 +105,7 @@ class LoginFormPopup extends Component {
                             this.props.signUp
                                 ? "Already have an account?"
                                 : "Don't have an account?"
-                        }<a onClick={this.props.onSignUp}>
+                        }<a onClick={this.props.toggleSignUp}>
                             {
                                 this.props.signUp
                                     ? "Login"
@@ -103,11 +117,17 @@ class LoginFormPopup extends Component {
         );
     }
 };
-
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
     return {
-        onLogin: (user) => dispatch(actions.user_login(user))
+        signUp: state.modal.signUp
     }
 }
 
-export default connect(null,mapDispatchToProps)(LoginFormPopup);
+const mapDispatchToProps = dispatch => {
+    return {
+        onLogin: (user) => dispatch(actions.user_login(user)),
+        onSignUp: (user) => dispatch(actions.user_signup(user))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(LoginFormPopup);
