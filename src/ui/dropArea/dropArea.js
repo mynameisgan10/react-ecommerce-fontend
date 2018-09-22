@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Styles from "./dropArea.css";
+import * as actions from "../../store/actions/index";
+import {connect} from "react-redux";
 
 class DropArea extends Component {
 
@@ -9,22 +11,26 @@ class DropArea extends Component {
         super(props);
         this.fileUpload = React.createRef();
     }
+    
     uploadChanged = (e) => {
         console.log(this.fileUpload.current.files);
         const reader = new FileReader();
-        const img = document.getElementById("test");
+        const propertyname = this.props.propertyNames[this.props.currentImage]
+        const img = this.props.imageRef[propertyname].current;
         reader.onload = (function (aImg) {
             return function (e) {
                 aImg.src = e.target.result;
             };
         })(img);
         reader.readAsDataURL(this.fileUpload.current.files[0]);
-
+        this.props.nextImage();
     }
     onDrop = (e) => {
-        // console.log(e);
+        e.preventDefault()
         const reader = new FileReader();
-        const img = document.getElementById("test");
+        console.log(this.props.imageRef);
+        const propertyname = this.props.propertyNames[this.props.currentImage]
+        const img = this.props.imageRef[propertyname].current;
         reader.onload = (function (aImg) {
             return function (e) {
                 aImg.src = e.target.result;
@@ -32,10 +38,11 @@ class DropArea extends Component {
         })(img);
         reader.readAsDataURL(e.dataTransfer.files[0]);
         console.log(e.dataTransfer.files)
+        this.props.nextImage();
         e.preventDefault();
+        // this.props.onDrop(e);
     }
     onDragOver = (e) => {
-        // console.log(e);
         e.preventDefault();
         e.stopPropagation();
     }
@@ -43,9 +50,6 @@ class DropArea extends Component {
         const Fragment = React.Fragment;
         return (
             <Fragment>
-                <figure className="image is-square">
-                    <img id="test" src="https://bulma.io/images/placeholders/128x128.png"/>
-                </figure>
                 <div
                     className={["box", "has-text-centered", Styles
                         .dropArea]
@@ -96,4 +100,13 @@ class DropArea extends Component {
     };
 }
 
-export default DropArea;
+
+const mapDispatchToProps = dispatch =>{
+    return{
+        onDrop: () => dispatch(actions.item_drop_image()),
+        saveImage: () => dispatch(actions.item_save_image())
+    }
+}
+
+
+export default connect(null, mapDispatchToProps)(DropArea);

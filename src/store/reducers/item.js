@@ -14,11 +14,12 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ITEM_NEW_IMAGE:
-            const newImages = state
-                .itemImages
-                .split();
-            newImages.push("new image path or something");
-            return utilities.updateObject(state, {itemImages: newImages})
+            // const newImages = state
+            //     .itemImages
+            //     .split();
+            // newImages.push("new image path or something");
+            // return utilities.updateObject(state, {itemImages: newImages})
+            return state;
         case actionTypes.ITEM_DELETE_IMAGE:
             const currentImages = state
                 .itemImages
@@ -42,6 +43,14 @@ const reducer = (state = initialState, action) => {
             }
             console.log(productPageItem);
             return utilities.updateObject(state, productPageItem)
+        case actionTypes.ITEM_SAVE_IMAGE:
+            const newImages = state.itemImages.splice();
+            newImages.push(action.image);
+            const newObject = {
+                itemImages: newImages
+            }
+            return utilities.updateObject(state, newObject);
+
         
     }
     return state
