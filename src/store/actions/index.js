@@ -16,5 +16,6 @@ export {
     get_items,
     get_single_item,
     item_drop_image,
-    item_save_image
+    item_save_image,
+    get_item_categories
 } from "./item"

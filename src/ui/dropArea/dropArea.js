@@ -92,7 +92,6 @@ class DropArea extends Component {
                                 </span>
                             </span>
                         </label>
-
                     </div>
                 </div>
             </Fragment>

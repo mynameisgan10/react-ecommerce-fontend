@@ -88,7 +88,25 @@ export const item_drop_image = (e) => {
         reader.readAsDataURL(e.dataTransfer.files[0]);
         console.log(e.dataTransfer.files)
         
-        dispatch(item_new_image());
-    
+        dispatch(item_new_image());  
+}
+
+export const get_item_categories = () => {
+    return dispatch => {
+        axios.get("http://localhost:3000/api/v1/item/categories")
+            .then(response =>{
+                dispatch(populate_item_categories(response.data.results))
+            })
+            .catch(err => {
+                throw err;
+            })
+    }
+}
+
+const populate_item_categories = (categories) => {
+    return {
+        type: actions.POPUPLATE_ITEM_CATEGORIES,
+        categories: categories
+    }
 }
 

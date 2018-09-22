@@ -47,7 +47,7 @@ class Photos extends Component{
                         <div className="columns is-multiline">
                             <div className="column is-6">
                                 <figure className="image is-square">
-                                    <img ref={this.firstImage} src="https://bulma.io/images/placeholders/128x128.png"/>
+                                    <img id="test" ref={this.firstImage} src="https://bulma.io/images/placeholders/128x128.png"/>
                                 </figure>
                             </div>
                             <div className="column is-6">
