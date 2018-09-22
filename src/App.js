@@ -15,11 +15,16 @@ import * as actions from "./store/actions/index";
 
 
 class App extends Component  {
+    componentDidMount(){
+        console.log("app mounted");
+        this.props.tryLogin();
+    }
     state = {
         showModal: false,
         login: false,
         signUp: false
     }
+    
     modalToggle = () => {
         this.setState({showModal: !this.state.showModal});
     }
@@ -75,7 +80,8 @@ const mapDispatchToProps = dispatch => {
         onShowModal: () => dispatch(actions.showModal()),
         onHideModal: () => dispatch(actions.hideModal()),
         toggleModal: () => dispatch(actions.toggleModal()),
-        toggleSignup: () => dispatch(actions.toggleSignup())
+        toggleSignup: () => dispatch(actions.toggleSignup()),
+        tryLogin: () => dispatch(actions.try_auto_login())
     }
 }
 

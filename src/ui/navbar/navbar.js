@@ -15,11 +15,13 @@ const navbar = (props) => {
     )
     let button = (
         <Fragment>
-            <a className="button is-primary is-medium" onClick={props.login}>
+
+            <a className="button is-info is-medium" onClick={props.login}>
                 <span style={{
                         color: "white"
                     }}>Login</span>
             </a>
+
         </Fragment>
     )
 
@@ -27,12 +29,35 @@ const navbar = (props) => {
         signUpButton = null
         button = (
             <Fragment>
-                <a className="button is-primary is-medium">
-                    <span
-                        style={{
-                            color: "white"
-                        }}>Logout</span>
-                </a>
+                <div className="navbar-item has-dropdown is-hoverable">
+                    <a className="button is-medium is-white navbar-link">
+                        <span className="icon has-text-link is-large fa-2x">
+                            <i className="far fa-user-circle"></i>
+                        </span>
+                    </a>
+                    <div className="navbar-dropdown is-boxed">
+                        <Link className="navbar-item" to="/profile">Profile</Link>
+                        <a
+                            className="navbar-item"
+                            href="https://bulma.io/documentation/modifiers/syntax/">
+                            Modifiers
+                        </a>
+                        <a
+                            className="navbar-item"
+                            href="https://bulma.io/documentation/columns/basics/">
+                            Columns
+                        </a>
+                        <a
+                            className="navbar-item"
+                            href="https://bulma.io/documentation/layout/container/">
+                            Layout
+                        </a>
+                        <a className="navbar-item" href="https://bulma.io/documentation/form/general/">
+                            Form
+                        </a>
+                    </div>
+                </div>
+
             </Fragment>
         )
     }
@@ -81,9 +106,7 @@ const navbar = (props) => {
 };
 
 const mapStateToProps = state => {
-    return {
-        authenticated: state.user.authenticated
-    }
+    return {authenticated: state.user.authenticated}
 }
 
-export default connect(mapStateToProps,null)(navbar);
+export default connect(mapStateToProps, null)(navbar);

@@ -1,12 +1,13 @@
 import * as actionTypes from "../actions/actionTypes";
 import * as utilities from "../utilities";
 
-const intialState = {
+const initialState = {
     itemName: null,
     itemCategory: null,
     itemPrice: null,
     itemDesc: null,
-    itemImages: []
+    itemImages: [],
+    currentItems: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -23,7 +24,14 @@ const reducer = (state = initialState, action) => {
                 .split();
             currentImages.splice(action.imageIndex);
             return utilities.updateObject(state, {itemImages: currentImages})
+        case actionTypes.GET_ITEMS_SUCCESS:
+            return {
+                ...state,
+                currentItems: [...action.items]
+            }
+        
     }
+    return state
 }
 
 export default reducer;

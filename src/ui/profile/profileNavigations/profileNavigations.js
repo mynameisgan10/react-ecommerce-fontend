@@ -26,12 +26,12 @@ const ProfileNavigations = () => {
             </div>
             <div className="columns">
                 <div className="column is-12">
-                    <div className="columns">
-                    <Products selling={false}/>
+                    
+                    <Products selling={false} items={[{id:1,name:"test"},{id:2,name:"test"},{id:3,name:"test"},{id:4,name:"test"}]}/>
                     {/* <Follows />
                     <Follows />
                     <Follows /> */}
-                    </div>
+                    
                     
                 </div>
             </div>

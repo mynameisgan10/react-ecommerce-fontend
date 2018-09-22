@@ -25,11 +25,11 @@ export const user_login = (user) => {
         }
 };
 
-export const user_login_success = () => {
+const user_login_success = () => {
     return {type: actions.USER_LOGIN_SUCCESS}
 }
 
-export const user_login_fail = () => {
+const user_login_fail = () => {
     return {type: actions.USER_LOGIN_FAIL};
 };
 
@@ -52,10 +52,39 @@ export const user_signup = (user) => {
     }
 }
 
-export const user_signup_fail = () => {
+const user_signup_fail = () => {
     return {type: actions.USER_SIGNUP_FAIL}
 }
 
-export const user_signup_success = () => {
+const user_signup_success = () => {
     return {type: actions.USER_SIGNUP_SUCCESS}
 }
+
+export const try_auto_login = () => {
+    console.log("trying auto login")
+    return dispatch => {
+        axios.post("http://localhost:3000/api/v1/users/me",{},{withCredentials:true, xsrfCookieName:'xsrf',xsrfHeaderName: 'X-XSRF-TOKEN'})
+            .then(response => {
+                if(response.data.success){
+                    console.log("great");
+                    console.log(response.data.message);
+                    dispatch(user_login_success())
+                }else{
+                    console.log("failed");
+                    dispatch(user_login_fail());
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+}
+
+const try_auto_login_success = () => {
+    return {type: actions.TRY_AUTO_LOGIN_SUCCESS}
+}
+
+const try_auto_login_fail = () => {
+    return {type: actions.TRY_AUTO_LOGIN_FAIL}
+}
+

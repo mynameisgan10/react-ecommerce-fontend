@@ -3,9 +3,9 @@ import Product from "./product/product";
 
 
 const Products = (props) => {
-    const array = [1,1,1,1,1,1,1,1]
-    const output = array.map(item => {
-        return (<Product selling={props.selling}/>)
+    const items = props.items;
+    const output = items.map(item => {
+        return (<Product key={item.id} item={item} selling={props.selling}/>)
     })
     return (
         <div className="columns is-multiline">

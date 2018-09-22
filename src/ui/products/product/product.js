@@ -36,7 +36,7 @@ const Product = (props) => {
                 </div>
                 <div className="card-content">
                     <div className="content has-text-centered">
-                        Lorem ipsum dolor sit amet
+                        {props.item.name}
                         {/* <a href="#">#css</a>
                         <a href="#">#responsive</a>
                         <br/>
