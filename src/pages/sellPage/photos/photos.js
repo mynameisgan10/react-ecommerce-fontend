@@ -16,36 +16,24 @@ const Photos = () => {
                         .join(" ")}>
                     <div className="columns is-multiline">
                         <div className="column is-6">
-                            <div
-                                className={["box", Styles
-                                    .itemImage]
-                                    .join(" ")}>
-                                <h1>Test</h1>
-                            </div>
+                            <figure className="image is-square">
+                                <img src="https://bulma.io/images/placeholders/128x128.png"/>
+                            </figure>
                         </div>
                         <div className="column is-6">
-                            <div
-                                className={["box", Styles
-                                    .itemImage]
-                                    .join(" ")}>
-                                <h1>Test</h1>
-                            </div>
+                            <figure className="image is-square">
+                                <img src="https://bulma.io/images/placeholders/128x128.png"/>
+                            </figure>
                         </div>
                         <div className="column is-6">
-                            <div
-                                className={["box", Styles
-                                    .itemImage]
-                                    .join(" ")}>
-                                <h1>Test</h1>
-                            </div>
+                            <figure className="image is-square">
+                                <img src="https://bulma.io/images/placeholders/128x128.png"/>
+                            </figure>
                         </div>
                         <div className="column is-6">
-                            <div
-                                className={["box", Styles
-                                    .itemImage]
-                                    .join(" ")}>
-                                <h1>Test</h1>
-                            </div>
+                            <figure className="image is-square">
+                                <img src="https://bulma.io/images/placeholders/128x128.png"/>
+                            </figure>
                         </div>
                     </div>
                 </div>
