@@ -1,19 +1,19 @@
 import React from 'react';
 
-const ProfileSummary = () => {
+const ProfileSummary = (props) => {
     const Fragment = React.Fragment;
     return (
         <Fragment>
         <article className="media">
             <div className="media-left">
-                <figure class="image is-128x128">
-                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png"/>
+                <figure className="image is-128x128">
+                    <img className="is-rounded" src="https://bulma.io/images/placeholders/128x128.png"/>
                 </figure>
             </div>
             <div className="media-content">
                 <div className="content">
                     <p>
-                        <strong>UserName</strong>
+                        <strong>{props.user}</strong>
                         <br/>
                         <small>@username</small>
                         <br/>

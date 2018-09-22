@@ -56,7 +56,7 @@ class App extends Component  {
         <Navbar login={this.props.toggleModal} signUp={this.modalToggle} authState={this.state.login}/>
         <Switch>
             <Route exact path="/login" component={LoginPage} />
-            <Route path="/product" component={ProductPage} />
+            <Route path="/item/:id" component={ProductPage} />
             <Route path="/profile" component={ProfilePage} />
             <Route path="/sell" component={SellPage} />
             <Route path="/" component={HomePage} />

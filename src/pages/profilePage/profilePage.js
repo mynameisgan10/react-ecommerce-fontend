@@ -2,8 +2,9 @@ import React from 'react';
 import ProfileSummary from "../../ui/profile/profileSummary/profileSummary";
 import ProfileNavigations from "../../ui/profile/profileNavigations/profileNavigations";
 import ProfileStats from "../../ui/profile/profileStats/profileStats";
+import {connect} from "react-redux";
 
-const ProfilePage = () => {
+const ProfilePage = (props) => {
     return (
         // <div     className="columns is-multiline"     style={{         marginTop:
         // "20px"     }}>     <ProfileSummary/>     <ProfileNavigations/> <ProfileStats
@@ -18,7 +19,7 @@ const ProfilePage = () => {
                     }}>
                     <div className="tile is-4 is-vertical is-parent">
                         <div className="tile is-child box">
-                            <ProfileSummary/>
+                            <ProfileSummary user={props.currentUser}/>
                         </div>
                         <div className="tile is-child box">
                             <ProfileStats/>
@@ -36,4 +37,10 @@ const ProfilePage = () => {
     );
 };
 
-export default ProfilePage;
+const mapStateToProps = state => {
+    return {
+        currentUser: state.user.currentUser
+    }
+}
+
+export default connect(mapStateToProps)(ProfilePage);

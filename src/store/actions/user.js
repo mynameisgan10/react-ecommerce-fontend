@@ -14,6 +14,7 @@ export const user_login = (user) => {
                 if (response.data.success) {
                     dispatch(toggleModal());
                     dispatch(user_login_success());
+                    dispatch(populate_user_info(response.data.user));
                 }else{
                     dispatch(user_login_fail());
                 }
@@ -24,6 +25,13 @@ export const user_login = (user) => {
             })
         }
 };
+
+const populate_user_info = (user) => {
+    return {
+        type: actions.POPULATE_USER_INFO,
+        user: user
+    }
+}
 
 const user_login_success = () => {
     return {type: actions.USER_LOGIN_SUCCESS}
@@ -68,7 +76,8 @@ export const try_auto_login = () => {
                 if(response.data.success){
                     console.log("great");
                     console.log(response.data.message);
-                    dispatch(user_login_success())
+                    dispatch(user_login_success());
+                    dispatch(populate_user_info(response.data.user));
                 }else{
                     console.log("failed");
                     dispatch(user_login_fail());

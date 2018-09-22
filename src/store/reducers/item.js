@@ -7,7 +7,8 @@ const initialState = {
     itemPrice: null,
     itemDesc: null,
     itemImages: [],
-    currentItems: []
+    currentItems: [],
+    productPageItem: {}
 }
 
 const reducer = (state = initialState, action) => {
@@ -29,6 +30,18 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 currentItems: [...action.items]
             }
+        case actionTypes.GET_SINGLE_ITEM_SUCCESS:
+            const item = {
+                itemName: action.item.name,
+                itemCategory: action.item.category_id,
+                itemPrice: action.item.price,
+                itemDesc: action.item.desc
+            }
+            const productPageItem = {
+                productPageItem: item
+            }
+            console.log(productPageItem);
+            return utilities.updateObject(state, productPageItem)
         
     }
     return state

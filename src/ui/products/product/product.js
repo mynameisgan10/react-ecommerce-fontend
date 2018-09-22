@@ -28,7 +28,7 @@ const Product = (props) => {
         <div className="column is-3">
             <div className="card">
                 <div className="card-image">
-                    <Link to="/product">
+                    <Link to={"/item/" + props.item.id}>
                         <figure className="image is-4by3">
                             <img src="https://picsum.photos/1280/960/?random" alt="Placeholder image"/>
                         </figure>

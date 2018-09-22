@@ -13,5 +13,6 @@ export {
 } from "./user"
 
 export {
-    get_items
+    get_items,
+    get_single_item
 } from "./item"
