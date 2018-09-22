@@ -11,6 +11,14 @@ class DropArea extends Component {
     }
     uploadChanged = (e) => {
         console.log(this.fileUpload.current.files);
+        const reader = new FileReader();
+        const img = document.getElementById("test");
+        reader.onload = (function (aImg) {
+            return function (e) {
+                aImg.src = e.target.result;
+            };
+        })(img);
+        reader.readAsDataURL(this.fileUpload.current.files[0]);
 
     }
     onDrop = (e) => {
