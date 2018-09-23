@@ -24,7 +24,6 @@ class DropArea extends Component {
             };
         })(img,this.props.storeImgSrc,propertyname);
         reader.readAsDataURL(this.fileUpload.current.files[0]);
-        this.props.nextImage();
     }
     onDrop = (e) => {
         e.preventDefault()
@@ -40,7 +39,6 @@ class DropArea extends Component {
         })(img,this.props.storeImgSrc,propertyname);
         reader.readAsDataURL(e.dataTransfer.files[0]);
         console.log(e.dataTransfer.files)
-        this.props.nextImage();
         e.preventDefault();
         // this.props.onDrop(e);
     }
@@ -91,7 +89,12 @@ class DropArea extends Component {
     };
 }
 
-
+const mapStateToProps = state => {
+    return {
+        currentImage: state.newItem.currentImage,
+        propertyNames: state.newItem.propertyNames
+    }
+}
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -99,4 +102,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(DropArea);
+export default connect(mapStateToProps, mapDispatchToProps)(DropArea);

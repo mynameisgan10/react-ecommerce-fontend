@@ -12,7 +12,9 @@ const initialState = {
     firstImage: "",
     secondImage: "",
     thirdImage: "",
-    fourthImage: ""
+    fourthImage: "",
+    currentImage: 0,
+    propertyNames: ["firstImage","secondImage","thirdImage","fourthImage"]
 }
 
 const reducer = (state = initialState, action) => {
@@ -28,7 +30,7 @@ const reducer = (state = initialState, action) => {
             }
             return utilities.updateObject(state, newValueObject)
         case actionTypes.STORE_IMAGE_SRC:
-            return utilities.updateObject(state,{[action.imageName]: action.src})
+            return utilities.updateObject(state,{[action.imageName]: action.src,currentImage: state.currentImage + 1})
 
     }
     return state

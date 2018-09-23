@@ -1,9 +1,9 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import DropArea from "../../../ui/dropArea/dropArea";
 import Styles from "./photos.css";
 
-class Photos extends Component{
-    constructor(props){
+class Photos extends Component {
+    constructor(props) {
         super(props);
         this.firstImage = React.createRef();
         this.secondImage = React.createRef();
@@ -11,11 +11,9 @@ class Photos extends Component{
         this.fourthImage = React.createRef();
     }
     state = {
-        currentImage: 0,
-        propertyNames: ["firstImage","secondImage","thirdImage","fourthImage"],
         imageRef: {}
     }
-    componentDidMount(){
+    componentDidMount() {
         this.setState({
             imageRef: {
                 firstImage: this.firstImage,
@@ -25,19 +23,12 @@ class Photos extends Component{
             }
         })
     }
-
-    nextImage = () => {
-        this.setState({
-            currentImage: this.state.currentImage + 1
-        })
-    }
-
-    render(){
+    render() {
         const Fragment = React.Fragment;
         return (
             <Fragment>
                 <div className="column is-6">
-                    <DropArea imageRef={this.state.imageRef} currentImage={this.state.currentImage} propertyNames={this.state.propertyNames} nextImage={this.nextImage} />
+                    <DropArea imageRef={this.state.imageRef}/>
                 </div>
                 <div className="column is-6">
                     <div
@@ -47,22 +38,31 @@ class Photos extends Component{
                         <div className="columns is-multiline">
                             <div className="column is-6">
                                 <figure className="image is-square">
-                                    <img id="test" ref={this.firstImage} src="https://bulma.io/images/placeholders/128x128.png"/>
+                                    <img
+                                        id="test"
+                                        ref={this.firstImage}
+                                        src="https://bulma.io/images/placeholders/128x128.png"/>
                                 </figure>
                             </div>
                             <div className="column is-6">
                                 <figure className="image is-square">
-                                    <img ref={this.secondImage} src="https://bulma.io/images/placeholders/128x128.png"/>
+                                    <img
+                                        ref={this.secondImage}
+                                        src="https://bulma.io/images/placeholders/128x128.png"/>
                                 </figure>
                             </div>
                             <div className="column is-6">
                                 <figure className="image is-square">
-                                    <img ref={this.thirdImage} src="https://bulma.io/images/placeholders/128x128.png"/>
+                                    <img
+                                        ref={this.thirdImage}
+                                        src="https://bulma.io/images/placeholders/128x128.png"/>
                                 </figure>
                             </div>
                             <div className="column is-6">
                                 <figure className="image is-square">
-                                    <img ref={this.fourthImage} src="https://bulma.io/images/placeholders/128x128.png"/>
+                                    <img
+                                        ref={this.fourthImage}
+                                        src="https://bulma.io/images/placeholders/128x128.png"/>
                                 </figure>
                             </div>
                         </div>
@@ -71,7 +71,7 @@ class Photos extends Component{
             </Fragment>
         );
     }
-   
+
 };
 
 export default Photos;
