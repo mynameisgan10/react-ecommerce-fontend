@@ -6,13 +6,15 @@ import App from "./App";
 import modal from "./store/reducers/modal";
 import user from "./store/reducers/user";
 import item from "./store/reducers/item";
+import newItem from "./store/reducers/newItem";
 import {createStore,compose, applyMiddleware, combineReducers} from 'redux';
 import thunk from 'redux-thunk';
 
 const reducers = combineReducers({
     modal: modal,
     user:user,
-    item: item 
+    item: item,
+    newItem: newItem
 });
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers,composeEnhancers(applyMiddleware(thunk)));

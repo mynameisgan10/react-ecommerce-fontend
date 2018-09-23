@@ -51,11 +51,6 @@ const reducer = (state = initialState, action) => {
                 itemImages: newImages
             }
             return utilities.updateObject(state, newObject);
-        case actionTypes.POPUPLATE_ITEM_CATEGORIES:
-            const newCategoriesObject = {
-                categories: action.categories
-            }
-            return utilities.updateObject(state, newCategoriesObject);
 
     }
     return state
