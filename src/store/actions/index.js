@@ -23,5 +23,6 @@ export {
     store_image_src,
     store_image_el_ref,
     select_item_category,
-    select_item_condition
+    select_item_condition,
+    list_new_item
 } from "./newItem"

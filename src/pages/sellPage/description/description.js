@@ -4,6 +4,15 @@ import {connect} from "react-redux";
 
 const Description = (props) => {
     const Fragment = React.Fragment;
+    let newItem = {
+        title: props.title,
+        brand: props.brand,
+        price: props.price,
+        description: props.description,
+        meetup: props.meetup,
+        condition: props.condition,
+        category_id: props.category_id
+    }
     return (
         <div className="column is-12">
 
@@ -91,11 +100,25 @@ const Description = (props) => {
                 <label className="label">Condition</label>
                 <div className="control">
                     <label className="radio">
-                        <input type="radio" name="question" value="New" checked={props.condition === "New" ? true : false} onClick={() => props.onSelectItemCondition("New")}/>
+                        <input
+                            type="radio"
+                            name="question"
+                            value="New"
+                            checked={props.condition === "New"
+                                ? true
+                                : false}
+                            onClick={() => props.onSelectItemCondition("New")}/>
                         New
                     </label>
                     <label className="radio">
-                        <input type="radio" name="question" value="Used" checked={props.condition === "Used" ? true : false} onClick={() => props.onSelectItemCondition("Used")}/>
+                        <input
+                            type="radio"
+                            name="question"
+                            value="Used"
+                            checked={props.condition === "Used"
+                                ? true
+                                : false}
+                            onClick={() => props.onSelectItemCondition("Used")}/>
                         Used
                     </label>
                 </div>
@@ -103,7 +126,7 @@ const Description = (props) => {
 
             <div className="field is-grouped is-grouped-centered">
                 <div className="control">
-                    <button className="button is-success">List It Now!</button>
+                    <button className="button is-success" onClick={() => props.onListItem(newItem)}>List It Now!</button>
                 </div>
                 <div className="control">
                     <button className="button is-text">Cancel</button>
@@ -115,17 +138,25 @@ const Description = (props) => {
 };
 
 const mapStateToProps = state => {
-    return {title: state.newItem.title,
-            brand: state.newItem.brand,
-            price: state.newItem.price,
-            description: state.newItem.description,
-            meetup: state.newItem.meetup,
-            condition: state.newItem.condition}
+    return {
+        title: state.newItem.title,
+        brand: state.newItem.brand,
+        price: state.newItem.price,
+        description: state.newItem.description,
+        meetup: state.newItem.meetup,
+        condition: state.newItem.condition,
+        category_id: state.newItem.category_id
+    }
 }
 const mapDispatchToProps = dispatch => {
     return {
         onInputChanged: (event) => dispatch(actions.new_item_info_input(event)),
-        onSelectItemCondition: (value) => dispatch(actions.select_item_condition(value))
+        onSelectItemCondition: (value) => dispatch(
+            actions.select_item_condition(value)
+        ),
+        onListItem: (newItem) => {
+            dispatch(actions.list_new_item(newItem))
+        }
     }
 }
 
