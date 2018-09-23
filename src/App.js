@@ -57,7 +57,7 @@ class App extends Component  {
         <Switch>
             <Route exact path="/login" component={LoginPage} />
             <Route path="/item/:id" component={ProductPage} />
-            {this.props.authenticated ? <Route path="/profile" component={ProfilePage} />: <Redirect to="/" />} {/*route protection */}
+            <Route path="/profile" component={ProfilePage} /> {/*route protection */}
             <Route path="/sell" component={SellPage} />
             <Route path="/" component={HomePage} />
         </Switch>

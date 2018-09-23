@@ -17,11 +17,12 @@ class DropArea extends Component {
         const reader = new FileReader();
         const propertyname = this.props.propertyNames[this.props.currentImage]
         const img = this.props.imageRef[propertyname].current;
-        reader.onload = (function (aImg) {
+        reader.onload = (function (aImg,storeImage,imagename) {
             return function (e) {
                 aImg.src = e.target.result;
+                storeImage(e.target.result,imagename);
             };
-        })(img);
+        })(img,this.props.storeImgSrc,propertyname);
         reader.readAsDataURL(this.fileUpload.current.files[0]);
         this.props.nextImage();
     }
@@ -31,11 +32,12 @@ class DropArea extends Component {
         console.log(this.props.imageRef);
         const propertyname = this.props.propertyNames[this.props.currentImage]
         const img = this.props.imageRef[propertyname].current;
-        reader.onload = (function (aImg) {
+        reader.onload = (function (aImg,storeImage,imagename) {
             return function (e) {
                 aImg.src = e.target.result;
+                storeImage(e.target.result,imagename);
             };
-        })(img);
+        })(img,this.props.storeImgSrc,propertyname);
         reader.readAsDataURL(e.dataTransfer.files[0]);
         console.log(e.dataTransfer.files)
         this.props.nextImage();
@@ -56,16 +58,6 @@ class DropArea extends Component {
                         .join(" ")}
                     onDragOver={this.onDragOver}
                     onDrop={this.onDrop}>
-                    {/* <a
-                    className={["button", "is-primary", "is-fullwidth", Styles
-                        .uploadButton]
-                        .join(" ")}>
-                    <span className="icon">
-                        <i className="fas fa-upload"/>
-                    </span>
-                    <span>Upload</span>
-                </a> */
-                    }
                     <div
                         className={["file", "is-primary", Styles
                             .uploadButton]
@@ -100,12 +92,11 @@ class DropArea extends Component {
 }
 
 
-const mapDispatchToProps = dispatch =>{
-    return{
-        onDrop: () => dispatch(actions.item_drop_image()),
-        saveImage: () => dispatch(actions.item_save_image())
+
+const mapDispatchToProps = dispatch => {
+    return {
+        storeImgSrc: (src,imagename) => dispatch(actions.store_image_src(src,imagename))
     }
 }
-
 
 export default connect(null, mapDispatchToProps)(DropArea);

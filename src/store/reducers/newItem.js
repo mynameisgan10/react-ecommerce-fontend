@@ -8,7 +8,11 @@ const initialState = {
     price: "",
     description: "",
     meetup: "",
-    categories: []
+    categories: [],
+    firstImage: "",
+    secondImage: "",
+    thirdImage: "",
+    fourthImage: ""
 }
 
 const reducer = (state = initialState, action) => {
@@ -23,6 +27,8 @@ const reducer = (state = initialState, action) => {
                 [action.target]: action.value
             }
             return utilities.updateObject(state, newValueObject)
+        case actionTypes.STORE_IMAGE_SRC:
+            return utilities.updateObject(state,{[action.imageName]: action.src})
 
     }
     return state

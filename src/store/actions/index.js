@@ -14,12 +14,11 @@ export {
 
 export {
     get_items,
-    get_single_item,
-    item_drop_image,
-    item_save_image
+    get_single_item
 } from "./item"
 
 export {
     get_item_categories,
-    new_item_info_input
+    new_item_info_input,
+    store_image_src
 } from "./newItem"

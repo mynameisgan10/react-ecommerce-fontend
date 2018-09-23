@@ -72,24 +72,7 @@ const get_single_item_success = (item) => {
 const get_single_item_fail = () => {
     return {type: actions.GET_SINGLE_ITEM_FAIL}
 }
-export const item_save_image = (image) => {
-    return {type: actions.ITEM_SAVE_IMAGE, image: image}
-}
-export const item_drop_image = (e) => {
-    e.preventDefault();
-        console.log(e);
-        const reader = new FileReader();
-        const img = document.getElementById("test");
-        reader.onload = (function (aImg) {
-            return function (e) {
-                aImg.src = e.target.result;
-            };
-        })(img);
-        reader.readAsDataURL(e.dataTransfer.files[0]);
-        console.log(e.dataTransfer.files)
-        
-        dispatch(item_new_image());  
-}
+
 
 // export const get_item_categories = () => {
 //     return dispatch => {
