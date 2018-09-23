@@ -27,8 +27,14 @@ export const store_image_src = (src, imageName) => {
     return {type: actions.STORE_IMAGE_SRC, src: src, imageName: imageName}
 }
 
-
-
 export const store_image_el_ref = (refName, ref) => {
     return {type: actions.STORE_IMAGE_EL_REF, refName: refName, ref: ref}
+}
+
+export const select_item_category = (cat_id) => {
+    return {type: actions.SELECT_ITEM_CATEGORY,id:cat_id}
+}
+
+export const select_item_condition = (value) => {
+    return {type: actions.SELECT_ITEM_CONDITION,value: value}
 }

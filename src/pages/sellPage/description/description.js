@@ -91,11 +91,11 @@ const Description = (props) => {
                 <label className="label">Condition</label>
                 <div className="control">
                     <label className="radio">
-                        <input type="radio" name="question"/>
+                        <input type="radio" name="question" value="New" checked={props.condition === "New" ? true : false} onClick={() => props.onSelectItemCondition("New")}/>
                         New
                     </label>
                     <label className="radio">
-                        <input type="radio" name="question"/>
+                        <input type="radio" name="question" value="Used" checked={props.condition === "Used" ? true : false} onClick={() => props.onSelectItemCondition("Used")}/>
                         Used
                     </label>
                 </div>
@@ -119,11 +119,13 @@ const mapStateToProps = state => {
             brand: state.newItem.brand,
             price: state.newItem.price,
             description: state.newItem.description,
-            meetup: state.newItem.meetup}
+            meetup: state.newItem.meetup,
+            condition: state.newItem.condition}
 }
 const mapDispatchToProps = dispatch => {
     return {
-        onInputChanged: (event) => dispatch(actions.new_item_info_input(event))
+        onInputChanged: (event) => dispatch(actions.new_item_info_input(event)),
+        onSelectItemCondition: (value) => dispatch(actions.select_item_condition(value))
     }
 }
 

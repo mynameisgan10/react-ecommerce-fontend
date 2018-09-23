@@ -3,9 +3,10 @@ import * as utilities from "../utilities";
 
 const initialState = {
     title: "",
-    condition: "",
+    condition: "New",
     brand: "",
     price: "",
+    selectedCategory: null,
     description: "",
     meetup: "",
     categories: [],
@@ -37,6 +38,10 @@ const reducer = (state = initialState, action) => {
             return utilities.updateObject(state,{[action.imageName]: action.src,currentImage: state.currentImage + 1})
         case actionTypes.STORE_IMAGE_EL_REF:
             return utilities.updateObject(state,{[action.refName+'Ref']: action.ref})
+        case actionTypes.SELECT_ITEM_CATEGORY:
+            return utilities.updateObject(state,{selectedCategory: action.id})
+        case actionTypes.SELECT_ITEM_CONDITION:
+            return utilities.updateObject(state,{condition: action.value})
 
     }
     return state

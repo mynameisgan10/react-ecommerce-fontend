@@ -21,5 +21,7 @@ export {
     get_item_categories,
     new_item_info_input,
     store_image_src,
-    store_image_el_ref
+    store_image_el_ref,
+    select_item_category,
+    select_item_condition
 } from "./newItem"

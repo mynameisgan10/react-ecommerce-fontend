@@ -15,15 +15,18 @@ class Categories extends Component {
             .categories
             .map(category => {
                 return (
-                    <li key={category.id}>
+                    <li key={category.id} onClick={() => this.props.onSelectCategory(category.id-1)}>
                         <a>{category.name}</a>
                     </li>
                 )
             })
-        console.log(this.props.categories);
+        let categoryValue = null;
+        if(this.props.selectedCategory || this.props.selectedCategory === 0){
+            categoryValue = this.props.categories[this.props.selectedCategory].name;
+        }
         return (
             <div className="column is-12 has-text-centered">
-                <input className="input" type="text" name="test" id="test"/>
+                <input className="input" type="text" name="test" value={categoryValue}/>
                 <div className="columns">
                     <div className="column is-6">
                         <aside className="menu has-text-left">
@@ -46,12 +49,14 @@ class Categories extends Component {
 };
 
 const mapStateToProps = state => {
-    return {categories: state.newItem.categories}
+    return {categories: state.newItem.categories,
+             selectedCategory: state.newItem.selectedCategory}
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        getCategories: () => dispatch(actions.get_item_categories())
+        getCategories: () => dispatch(actions.get_item_categories()),
+        onSelectCategory: (id) => dispatch(actions.select_item_category(id))
     }
 }
 

@@ -40,7 +40,7 @@ const SellPage = ({match}) => {
                         <Route path='/sell/photos' component={Photos}/>
                         <Route
                             path="/sell"
-                            exact="exact"
+                            exact
                             render={() => {
                                 return <Redirect to="/sell/photos"/>
                             }}/>
