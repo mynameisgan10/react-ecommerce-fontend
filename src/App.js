@@ -8,7 +8,7 @@ import Navbar from "./ui/navbar/navbar";
 import LoginFormPopUp from "./ui/loginFormPopup/loginFormPopup";
 import Modal from "./utils/modal/modal";
 import Styles from "./App.css";
-import {Switch, Route} from "react-router-dom";
+import {Switch, Route, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import * as actions from "./store/actions/index";
@@ -57,7 +57,7 @@ class App extends Component  {
         <Switch>
             <Route exact path="/login" component={LoginPage} />
             <Route path="/item/:id" component={ProductPage} />
-            <Route path="/profile" component={ProfilePage} />
+            {this.props.authenticated ? <Route path="/profile" component={ProfilePage} />: <Redirect to="/" />} {/*route protection */}
             <Route path="/sell" component={SellPage} />
             <Route path="/" component={HomePage} />
         </Switch>
@@ -71,7 +71,8 @@ class App extends Component  {
 const mapStateToProps = state => {
     return {
         showModal: state.modal.showModal,
-        signUp: state.modal.signUp
+        signUp: state.modal.signUp,
+        authenticated: state.user.authenticated
     }
 }
 
