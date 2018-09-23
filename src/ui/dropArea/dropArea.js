@@ -11,32 +11,43 @@ class DropArea extends Component {
         super(props);
         this.fileUpload = React.createRef();
     }
-    
+
     uploadChanged = (e) => {
         console.log(this.fileUpload.current.files);
         const reader = new FileReader();
-        const propertyname = this.props.propertyNames[this.props.currentImage]
-        const img = this.props.imageRef[propertyname].current;
-        reader.onload = (function (aImg,storeImage,imagename) {
+        const propertyname = this
+            .props
+            .propertyNames[this.props.currentImage]
+        const img = this
+            .props
+            .imageRef[propertyname]
+            .current;
+        reader.onload = (function (aImg, storeImage, imagename) {
             return function (e) {
                 aImg.src = e.target.result;
-                storeImage(e.target.result,imagename);
+                storeImage(e.target.result, imagename);
             };
-        })(img,this.props.storeImgSrc,propertyname);
+        })(img, this.props.storeImgSrc, propertyname);
         reader.readAsDataURL(this.fileUpload.current.files[0]);
     }
     onDrop = (e) => {
         e.preventDefault()
         const reader = new FileReader();
         console.log(this.props.imageRef);
-        const propertyname = this.props.propertyNames[this.props.currentImage]
-        const img = this.props.imageRef[propertyname].current;
-        reader.onload = (function (aImg,storeImage,imagename) {
+        const propertyname = this
+            .props
+            .propertyNames[this.props.currentImage]
+        const img = this
+            .props
+            .imageRef[propertyname]
+            .current;
+        reader.onload = (function (aImg, storeImage, imagename) {
             return function (e) {
+                storeImage(e.target.result, imagename);
                 aImg.src = e.target.result;
-                storeImage(e.target.result,imagename);
+                
             };
-        })(img,this.props.storeImgSrc,propertyname);
+        })(img, this.props.storeImgSrc, propertyname);
         reader.readAsDataURL(e.dataTransfer.files[0]);
         console.log(e.dataTransfer.files)
         e.preventDefault();
@@ -92,13 +103,15 @@ class DropArea extends Component {
 const mapStateToProps = state => {
     return {
         currentImage: state.newItem.currentImage,
-        propertyNames: state.newItem.propertyNames
+        propertyNames: state.newItem.propertyNames,
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        storeImgSrc: (src,imagename) => dispatch(actions.store_image_src(src,imagename))
+        storeImgSrc: (src, imagename) => dispatch(
+            actions.store_image_src(src, imagename)
+        )
     }
 }
 
