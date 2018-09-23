@@ -31,3 +31,11 @@ export const store_image_src = (src,imageName) => {
         imageName: imageName
     }
 }
+
+export const store_image_el_ref = (refName,ref) => {
+    return {
+        type: actions.STORE_IMAGE_EL_REF,
+        refName: refName,
+        ref: ref
+    }
+}

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import DropArea from "../../../ui/dropArea/dropArea";
 import Styles from "./photos.css";
+import * as actions from "../../../store/actions/index";
+import {connect} from "react-redux";
 
 class Photos extends Component {
     constructor(props) {
@@ -22,6 +24,10 @@ class Photos extends Component {
                 fourthImage: this.fourthImage
             }
         })
+        this.props.storeImageRef("firstImage",this.firstImage.current);
+        this.props.storeImageRef("secondImage",this.secondImage.current);
+        this.props.storeImageRef("thirdImage",this.thirdImage.current);
+        this.props.storeImageRef("fourthImage",this.fourthImage.current);
     }
     render() {
         const Fragment = React.Fragment;
@@ -74,4 +80,10 @@ class Photos extends Component {
 
 };
 
-export default Photos;
+const mapDispatchToProps = dispatch => {
+    return {
+        storeImageRef: (refName,ref) => dispatch(actions.store_image_el_ref(refName,ref))
+    }
+}
+
+export default connect(null,mapDispatchToProps)(Photos);
