@@ -17,3 +17,9 @@ export const get_item_categories = () => {
 const populate_item_categories = (categories) => {
     return {type: actions.POPUPLATE_ITEM_CATEGORIES, categories: categories}
 }
+
+
+export const new_item_info_input = (event) => {
+    console.log(event.target.name);
+    return {type: actions.NEW_ITEM_INFO_INPUT,value: event.target.value, target: event.target.name}
+}

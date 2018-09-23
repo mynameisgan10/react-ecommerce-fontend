@@ -20,5 +20,6 @@ export {
 } from "./item"
 
 export {
-    get_item_categories
+    get_item_categories,
+    new_item_info_input
 } from "./newItem"
