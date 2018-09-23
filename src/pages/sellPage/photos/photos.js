@@ -24,10 +24,10 @@ class Photos extends Component {
                 fourthImage: this.fourthImage
             }
         })
-        this.props.storeImageRef("firstImage",this.firstImage.current);
-        this.props.storeImageRef("secondImage",this.secondImage.current);
-        this.props.storeImageRef("thirdImage",this.thirdImage.current);
-        this.props.storeImageRef("fourthImage",this.fourthImage.current);
+        // this.props.storeImageRef("firstImage",this.firstImage.current);
+        // this.props.storeImageRef("secondImage",this.secondImage.current);
+        // this.props.storeImageRef("thirdImage",this.thirdImage.current);
+        // this.props.storeImageRef("fourthImage",this.fourthImage.current);
     }
     render() {
         const Fragment = React.Fragment;

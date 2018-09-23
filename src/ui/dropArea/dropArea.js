@@ -13,8 +13,9 @@ class DropArea extends Component {
     }
 
     uploadChanged = (e) => {
+        event.preventDefault();
         console.log(this.fileUpload.current.files);
-        const reader = new FileReader();
+        
         const propertyname = this
             .props
             .propertyNames[this.props.currentImage]
@@ -22,18 +23,23 @@ class DropArea extends Component {
             .props
             .imageRef[propertyname]
             .current;
-        reader.onload = (function (aImg, storeImage, imagename) {
-            return function (e) {
-                aImg.src = e.target.result;
-                storeImage(e.target.result, imagename);
-            };
-        })(img, this.props.storeImgSrc, propertyname);
-        reader.readAsDataURL(this.fileUpload.current.files[0]);
+            
+            const { files } = this.fileUpload.current;
+            const localImageUrl =  window.URL.createObjectURL(files[0]);
+            this.props.storeImgSrc(localImageUrl,propertyname);
+            img.src = localImageUrl;
+        // const reader = new FileReader();
+        // reader.onload = (function (aImg, storeImage, imagename) {
+        //     return function (e) {
+        //         aImg.src = e.target.result;
+        //         storeImage(e.target.result, imagename);
+        //     };
+        // })(img, this.props.storeImgSrc, propertyname);
+        // reader.readAsDataURL(this.fileUpload.current.files[0]);
     }
-    onDrop = (e) => {
-        e.preventDefault()
-        const reader = new FileReader();
-        console.log(this.props.imageRef);
+    onDrop = (event) => {
+        event.preventDefault()
+        
         const propertyname = this
             .props
             .propertyNames[this.props.currentImage]
@@ -41,17 +47,19 @@ class DropArea extends Component {
             .props
             .imageRef[propertyname]
             .current;
-        reader.onload = (function (aImg, storeImage, imagename) {
-            return function (e) {
-                storeImage(e.target.result, imagename);
-                aImg.src = e.target.result;
+        // const reader = new FileReader();
+        // reader.onload = (function (aImg, storeImage, imagename) {
+        //     return function (e) {
+        //         storeImage(e.target.result, imagename);
+        //         aImg.src = e.target.result;
                 
-            };
-        })(img, this.props.storeImgSrc, propertyname);
-        reader.readAsDataURL(e.dataTransfer.files[0]);
-        console.log(e.dataTransfer.files)
-        e.preventDefault();
-        // this.props.onDrop(e);
+        //     };
+        // })(img, this.props.storeImgSrc, propertyname);
+        // reader.readAsDataURL(e.dataTransfer.files[0]);
+        const { files } = event.dataTransfer;
+        const localImageUrl =  window.URL.createObjectURL(files[0]);
+        img.src = localImageUrl;
+        this.props.storeImgSrc(localImageUrl,propertyname);
     }
     onDragOver = (e) => {
         e.preventDefault();
@@ -104,6 +112,10 @@ const mapStateToProps = state => {
     return {
         currentImage: state.newItem.currentImage,
         propertyNames: state.newItem.propertyNames,
+        firstImage: state.newItem.firstImage,
+        secondImage: state.newItem.secondImage,
+        thirdImage: state.newItem.thirdImage,
+        fourthImage: state.newItem.thirdImage
     }
 }
 
