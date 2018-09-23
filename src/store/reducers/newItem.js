@@ -37,10 +37,6 @@ const reducer = (state = initialState, action) => {
             return utilities.updateObject(state,{[action.imageName]: action.src,currentImage: state.currentImage + 1})
         case actionTypes.STORE_IMAGE_EL_REF:
             return utilities.updateObject(state,{[action.refName+'Ref']: action.ref})
-        case actionTypes.POPULATE_PREVIEW_IMAGE_SRC:
-            const newImageSrc = state[action.refName+'Ref'];
-            newImageSrc.src = action.src;
-            return utilities.updateObject(state,{[action.refName+'Ref']: newImageSrc})
 
     }
     return state

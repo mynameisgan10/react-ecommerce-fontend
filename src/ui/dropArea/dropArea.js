@@ -47,6 +47,11 @@ class DropArea extends Component {
             .props
             .imageRef[propertyname]
             .current;
+        console.log(this.props.firstImage);
+        const { files } = event.dataTransfer;
+        const localImageUrl =  window.URL.createObjectURL(files[0]);
+        img.src = localImageUrl;
+        this.props.storeImgSrc(localImageUrl,propertyname);
         // const reader = new FileReader();
         // reader.onload = (function (aImg, storeImage, imagename) {
         //     return function (e) {
@@ -56,10 +61,6 @@ class DropArea extends Component {
         //     };
         // })(img, this.props.storeImgSrc, propertyname);
         // reader.readAsDataURL(e.dataTransfer.files[0]);
-        const { files } = event.dataTransfer;
-        const localImageUrl =  window.URL.createObjectURL(files[0]);
-        img.src = localImageUrl;
-        this.props.storeImgSrc(localImageUrl,propertyname);
     }
     onDragOver = (e) => {
         e.preventDefault();

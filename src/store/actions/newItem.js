@@ -27,9 +27,7 @@ export const store_image_src = (src, imageName) => {
     return {type: actions.STORE_IMAGE_SRC, src: src, imageName: imageName}
 }
 
-const populate_preview_image_src = (src, imageName) => {
-    return {type: actions.POPULATE_PREVIEW_IMAGE_SRC, src: src, imageName: imageName}
-}
+
 
 export const store_image_el_ref = (refName, ref) => {
     return {type: actions.STORE_IMAGE_EL_REF, refName: refName, ref: ref}
