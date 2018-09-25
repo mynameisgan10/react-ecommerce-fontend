@@ -26,3 +26,7 @@ export {
     select_item_condition,
     list_new_item
 } from "./newItem"
+
+export {
+    formInput
+} from "./loginForm"

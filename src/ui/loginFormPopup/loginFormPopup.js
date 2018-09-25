@@ -12,16 +12,15 @@ class LoginFormPopup extends Component {
     }
 
     onUserNameInput = (event) => {
-        console.log(event.target.value);
-        this.setState({username: event.target.value})
+        this.props.onInput("username", event.target.value);
     }
 
     onPasswordInput = (event) => {
-        this.setState({password: event.target.value})
+        this.props.onInput("password", event.target.value);
     }
 
     onConfirmPasswordInput = (event) => {
-        this.setState({confirmpassword: event.target.value})
+        this.props.onInput("confirmPassword", event.target.value);
     }
     onFormSubmit = () => {
         if(this.props.signUp){
@@ -50,8 +49,8 @@ class LoginFormPopup extends Component {
             cfmPassword = (
                 <FormInput
                     label="Confirm Password"
-                    type="password"
-                    value={this.state.confirmpassword}
+                    type="text"
+                    value={this.props.confirmPassword}
                     onFormInput={this.onConfirmPasswordInput}
                     success={false}
                     placeholder="Confirm Password"
@@ -73,7 +72,7 @@ class LoginFormPopup extends Component {
                 <FormInput
                     label="username"
                     type="text"
-                    value={this.state.username}
+                    value={this.props.username}
                     onFormInput={this.onUserNameInput}
                     success={false}
                     placeholder="Email input"
@@ -83,7 +82,7 @@ class LoginFormPopup extends Component {
                 <FormInput
                     label="Password"
                     type="password"
-                    value={this.state.password}
+                    value={this.props.password}
                     onFormInput={this.onPasswordInput}
                     success={false}
                     placeholder="Please type in a password"
@@ -119,14 +118,18 @@ class LoginFormPopup extends Component {
 };
 const mapStateToProps = state => {
     return {
-        signUp: state.modal.signUp
+        signUp: state.modal.signUp,
+        username: state.loginForm.username,
+        password: state.loginForm.password,
+        confirmPassword: state.loginForm.confirmPassword
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         onLogin: (user) => dispatch(actions.user_login(user)),
-        onSignUp: (user) => dispatch(actions.user_signup(user))
+        onSignUp: (user) => dispatch(actions.user_signup(user)),
+        onInput: (propertyName,value) => dispatch(actions.formInput(propertyName,value))
     }
 }
 
