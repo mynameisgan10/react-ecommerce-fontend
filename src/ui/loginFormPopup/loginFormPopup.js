@@ -5,36 +5,26 @@ import * as actions from "../../store/actions/index";
 import {connect} from "react-redux";
 
 class LoginFormPopup extends Component {
-    onUserNameInput = (event) => {
-        this.props.onInput("username", event.target.value);
-    }
-
-    onPasswordInput = (event) => {
-        this.props.onInput("password", event.target.value);
-    }
-
-    onConfirmPasswordInput = (event) => {
-        this.props.onInput("confirmPassword", event.target.value);
-    }
     onFormSubmit = () => {
-        if(this.props.signUp){
-            this.props.onSignUp({
-                username: this.state.username.value,
-                password: this.state.password.value,
-                confirmpassword: this.state.confirmpassword.value
-            })
-        }else{
-            this.props.onLogin({
-                username: this.state.username.value,
-                password: this.state.password.value
-            })
+        if (this.props.signUp) {
+            this
+                .props
+                .onSignUp(
+                    {username: this.props.username.value, password: this.props.password.value, confirmpassword: this.props.confirmpassword.value}
+                )
+        } else {
+            this
+                .props
+                .onLogin(
+                    {username: this.props.username.value, password: this.props.password.value}
+                )
         }
     }
 
     render() {
         const styles = ["container", Styles.popup];
         let cfmPassword = null;
-        
+
         if (this.props.show) {
             styles.push(Styles.active);
         }
@@ -44,7 +34,7 @@ class LoginFormPopup extends Component {
                     label={this.props.confirmPassword.label}
                     type={this.props.confirmPassword.type}
                     value={this.props.confirmPassword.value}
-                    onFormInput={this.onConfirmPasswordInput}
+                    onFormInput={(event) => this.props.onInput("confirmPassword", event.target.value)}
                     success={this.props.confirmPassword.success}
                     onTouch={this.props.confirmPassword.onTouch}
                     placeholder={this.props.confirmPassword.placeHolder}
@@ -67,7 +57,7 @@ class LoginFormPopup extends Component {
                     label={this.props.username.label}
                     type={this.props.username.type}
                     value={this.props.username.value}
-                    onFormInput={this.onUserNameInput}
+                    onFormInput={(event) => this.props.onInput("username", event.target.value)}
                     success={this.props.username.success}
                     onTouch={this.props.username.onTouch}
                     placeholder={this.props.username.placeHolder}
@@ -78,7 +68,7 @@ class LoginFormPopup extends Component {
                     label={this.props.password.label}
                     type={this.props.password.type}
                     value={this.props.password.value}
-                    onFormInput={this.onPasswordInput}
+                    onFormInput={(event) => this.props.onInput("password", event.target.value)}
                     success={this.props.password.success}
                     onTouch={this.props.password.onTouch}
                     placeholder={this.props.password.placeHolder}
@@ -113,21 +103,18 @@ class LoginFormPopup extends Component {
     }
 };
 const mapStateToProps = state => {
-    return {
-        signUp: state.loginForm.signUp,
-        username: state.loginForm.username,
-        password: state.loginForm.password,
-        confirmPassword: state.loginForm.confirmPassword,
-    }
+    return {signUp: state.loginForm.signUp, username: state.loginForm.username, password: state.loginForm.password, confirmPassword: state.loginForm.confirmPassword}
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         onLogin: (user) => dispatch(actions.user_login(user)),
         onSignUp: (user) => dispatch(actions.user_signup(user)),
-        onInput: (propertyName,value) => dispatch(actions.formInput(propertyName,value)),
+        onInput: (propertyName, value) => dispatch(
+            actions.formInput(propertyName, value)
+        ),
         toggleSignUp: () => dispatch(actions.toggleSignup())
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(LoginFormPopup);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginFormPopup);

@@ -17,7 +17,7 @@ const initialState = {
     password: {
         label: 'password',
         maxLength: 32,
-        minLength: 10,
+        minLength: 8,
         required: true,
         onTouch: false,
         value: '',
@@ -29,7 +29,7 @@ const initialState = {
     confirmPassword: {
         label: 'confirm password',
         maxLength: 32,
-        minLength: 10,
+        minLength: 8,
         required: true,
         onTouch: false,
         value: '',
