@@ -54,6 +54,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.TOGGLE_SIGNUP:
             return utilities.updateObject(state,{signUp: !state.signUp})
         case actionTypes.CHECK_FORM_VALIDITY:
+        // todo: outsource the check form validity out
             let valid = true
             const validation = {
                 [action.propertyName]: {
@@ -81,6 +82,14 @@ const reducer = (state = initialState, action) => {
                 validation[action.propertyName].success = false;
                 validation[action.propertyName].errorMessage = "The field should have less than " + state[action.propertyName].maxLength + " characters";
                 return utilities.updateObject(state, validation)
+            }
+
+            if(action.propertyName === 'confirmPassword'){
+                if(state.password.value !== state.confirmPassword.value) {
+                    validation[action.propertyName].success = false;
+                validation[action.propertyName].errorMessage = "Both the password and confirm password fields should have the same value";
+                return utilities.updateObject(state, validation)
+                }
             }
 
             validation[action.propertyName].success = valid;
