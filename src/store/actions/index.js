@@ -1,8 +1,7 @@
 export {
     showModal,
     hideModal,
-    toggleModal,
-    toggleSignup
+    toggleModal
 } from "./modal"
 
 export {
@@ -28,5 +27,6 @@ export {
 } from "./newItem"
 
 export {
-    formInput
+    formInput,
+    toggleSignup
 } from "./loginForm"

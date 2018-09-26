@@ -19,41 +19,27 @@ class App extends Component  {
         console.log("app mounted");
         this.props.tryLogin();
     }
-    state = {
-        showModal: false,
-        login: false,
-        signUp: false
-    }
-    
-    modalToggle = () => {
-        this.setState({showModal: !this.state.showModal});
-    }
     onScroll = (e) =>{
-        if(this.state.showModal){
+        if(this.props.showModal){
             e.preventDefault();
         }
         console.log("scrolling");
-    }
-    signUpToggle = () => {
-        this.setState({
-            signUp: !this.state.signUp
-        })
     }
 
     render(){
         const Fragment = React.Fragment;
         const styles = ["container","is-fluid"];
-        if(this.state.showModal){
+        if(this.props.showModal){
             styles.push(Styles.scrollLock)
         }
         return (
         <Fragment>
             <Modal show={this.props.showModal} toggleModal={this.props.toggleModal}>
-            <LoginFormPopUp show={this.props.showModal} toggleSignUp={this.props.toggleSignup} signUp={this.props.signUp}/>
+            <LoginFormPopUp show={this.props.showModal} />
             </Modal>
         <div className={styles.join(" ")} onWheel={this.onScroll}>
         
-        <Navbar login={this.props.toggleModal} signUp={this.modalToggle} authState={this.state.login}/>
+        <Navbar login={this.props.toggleModal} />
         <Switch>
             <Route exact path="/login" component={LoginPage} />
             <Route path="/item/:id" component={ProductPage} />
@@ -70,8 +56,7 @@ class App extends Component  {
 
 const mapStateToProps = state => {
     return {
-        showModal: state.modal.showModal,
-        signUp: state.modal.signUp
+        showModal: state.modal.showModal
     }
 }
 

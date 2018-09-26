@@ -2,8 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 import * as utilities from "../utilities";
 
 const initialState = {
-    showModal: false,
-    signUp: false
+    showModal: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -14,8 +13,8 @@ const reducer = (state = initialState, action) => {
             return utilities.updateObject(state,{showModal: false})
         case actionTypes.TOGGLE_MODAL:
             return utilities.updateObject(state,{showModal: !state.showModal})
-        case actionTypes.TOGGLE_SIGNUP:
-            return utilities.updateObject(state,{signUp: !state.signUp})
+        // case actionTypes.TOGGLE_SIGNUP:
+        //     return utilities.updateObject(state,{signUp: !state.signUp})
     }
     return state
 }

@@ -17,3 +17,9 @@ const checkValidity = (propertyName) => {
         type: actions.CHECK_FORM_VALIDITY, propertyName: propertyName
     }
 }
+
+export const toggleSignup = () => {
+    return {
+        type: actions.TOGGLE_SIGNUP
+    }
+}

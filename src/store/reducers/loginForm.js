@@ -51,6 +51,8 @@ const reducer = (state = initialState, action) => {
                 onTouch: true
             }}
             return utilities.updateObject(state, newValue)
+        case actionTypes.TOGGLE_SIGNUP:
+            return utilities.updateObject(state,{signUp: !state.signUp})
         case actionTypes.CHECK_FORM_VALIDITY:
             let valid = true
             const validation = {

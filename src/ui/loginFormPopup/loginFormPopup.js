@@ -114,10 +114,10 @@ class LoginFormPopup extends Component {
 };
 const mapStateToProps = state => {
     return {
-        signUp: state.modal.signUp,
+        signUp: state.loginForm.signUp,
         username: state.loginForm.username,
         password: state.loginForm.password,
-        confirmPassword: state.loginForm.confirmPassword
+        confirmPassword: state.loginForm.confirmPassword,
     }
 }
 
@@ -125,7 +125,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onLogin: (user) => dispatch(actions.user_login(user)),
         onSignUp: (user) => dispatch(actions.user_signup(user)),
-        onInput: (propertyName,value) => dispatch(actions.formInput(propertyName,value))
+        onInput: (propertyName,value) => dispatch(actions.formInput(propertyName,value)),
+        toggleSignUp: () => dispatch(actions.toggleSignup())
     }
 }
 
