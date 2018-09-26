@@ -4,15 +4,15 @@ import {connect} from "react-redux";
 
 const navbar = (props) => {
     const Fragment = React.Fragment;
-    let signUpButton = (
-        <p className="control">
-            <a className="bd-tw-button button is-medium" onClick={props.signUp}>
-                <span>
-                    Signup
-                </span>
-            </a>
-        </p>
-    )
+    // let signUpButton = (
+    //     <p className="control">
+    //         <a className="bd-tw-button button is-medium" onClick={props.signUp}>
+    //             <span>
+    //                 Signup
+    //             </span>
+    //         </a>
+    //     </p>
+    // )
     let button = (
         <Fragment>
 
@@ -26,7 +26,7 @@ const navbar = (props) => {
     )
 
     if (props.authenticated) {
-        signUpButton = null
+        // signUpButton = null
         button = (
             <Fragment>
                 <div className="navbar-item has-dropdown is-hoverable">
@@ -90,7 +90,6 @@ const navbar = (props) => {
                                     </span>
                                 </Link>
                             </p>
-                            {signUpButton}
                             <p className="control">
 
                                 {/* <Link to="/login" style={{color:"white"}}><span>Login</span></Link> */}

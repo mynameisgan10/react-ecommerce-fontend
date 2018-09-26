@@ -61,22 +61,24 @@ const reducer = (state = initialState, action) => {
                     success: valid
                 }
             }
+            if (/\s/.test(state[action.propertyName].value)) {
+                validation[action.propertyName].success = false;
+                validation[action.propertyName].errorMessage = "The field cannot have spaces"
+                return utilities.updateObject(state, validation)
+            }
             if(state[action.propertyName].value.length === 0){
-                valid = false
-                validation[action.propertyName].success = valid;
+                validation[action.propertyName].success = false;
                 validation[action.propertyName].errorMessage = "The field cannot be empty"
                 return utilities.updateObject(state, validation)
             }
             if(state[action.propertyName].value.length <= state[action.propertyName].minLength){
-                valid = false;
-                validation[action.propertyName].success = valid;
+                validation[action.propertyName].success = false;
                 validation[action.propertyName].errorMessage = "The field should have atleast " + state[action.propertyName].minLength + " characters";
                 return utilities.updateObject(state, validation)
             }
 
             if(state[action.propertyName].value.length >= state[action.propertyName].maxLength){
-                valid = false;
-                validation[action.propertyName].success = valid;
+                validation[action.propertyName].success = false;
                 validation[action.propertyName].errorMessage = "The field should have less than " + state[action.propertyName].maxLength + " characters";
                 return utilities.updateObject(state, validation)
             }
