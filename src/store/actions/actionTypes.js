@@ -35,7 +35,7 @@ export const GET_SINGLE_ITEM_SUCCESS = 'GET_SINGLE_ITEM_SUCCESS';
 
 // loginFormPopUp
 export const FORM_INPUT = 'FORM_INPUT';
-
+export const CHECK_FORM_VALIDITY = 'CHECK_FORM_VALIDITY';
 
 
 //new item

@@ -1,9 +1,11 @@
 import React from 'react';
 
 const formInput = (props) => {
-    let status = "is-danger";
-    if (props.success) {
+    let status = "";
+    if (props.success && props.onTouch) {
         status = "is-success"
+    }else if(!props.success && props.onTouch){
+        status = "is-danger"
     }
     const output = (
         <div className="field">
@@ -14,7 +16,7 @@ const formInput = (props) => {
                     type={props.type}
                     value={props.value}
                     onInput={props.onFormInput}
-                    placeholder={props.placeHolder}
+                    placeholder={props.placeholder}
                     defaultValue="bulma"/>
                 <span className="icon is-small is-left">
                     <i className={props.leftIcon}/>

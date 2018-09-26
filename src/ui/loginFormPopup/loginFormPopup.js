@@ -5,12 +5,6 @@ import * as actions from "../../store/actions/index";
 import {connect} from "react-redux";
 
 class LoginFormPopup extends Component {
-    state = {
-        username: '',
-        password: '',
-        confirmpassword: ''
-    }
-
     onUserNameInput = (event) => {
         this.props.onInput("username", event.target.value);
     }
@@ -25,14 +19,14 @@ class LoginFormPopup extends Component {
     onFormSubmit = () => {
         if(this.props.signUp){
             this.props.onSignUp({
-                username: this.state.username,
-                password: this.state.password,
-                confirmpassword: this.state.confirmpassword
+                username: this.state.username.value,
+                password: this.state.password.value,
+                confirmpassword: this.state.confirmpassword.value
             })
         }else{
             this.props.onLogin({
-                username: this.state.username,
-                password: this.state.password
+                username: this.state.username.value,
+                password: this.state.password.value
             })
         }
     }
@@ -41,22 +35,22 @@ class LoginFormPopup extends Component {
         const styles = ["container", Styles.popup];
         let cfmPassword = null;
         
-
         if (this.props.show) {
             styles.push(Styles.active);
         }
         if (this.props.signUp) {
             cfmPassword = (
                 <FormInput
-                    label="Confirm Password"
-                    type="text"
-                    value={this.props.confirmPassword}
+                    label={this.props.confirmPassword.label}
+                    type={this.props.confirmPassword.type}
+                    value={this.props.confirmPassword.value}
                     onFormInput={this.onConfirmPasswordInput}
-                    success={false}
-                    placeholder="Confirm Password"
+                    success={this.props.confirmPassword.success}
+                    onTouch={this.props.confirmPassword.onTouch}
+                    placeholder={this.props.confirmPassword.placeHolder}
                     leftIcon="fas fa-key"
                     rightIcon="fas fa-exclamation-triangle"
-                    message="password too short"/>
+                    message={this.props.confirmPassword.errorMessage}/>
             )
         }
         return (
@@ -70,25 +64,27 @@ class LoginFormPopup extends Component {
                     </a>
                 </p>
                 <FormInput
-                    label="username"
-                    type="text"
-                    value={this.props.username}
+                    label={this.props.username.label}
+                    type={this.props.username.type}
+                    value={this.props.username.value}
                     onFormInput={this.onUserNameInput}
-                    success={false}
-                    placeholder="Email input"
+                    success={this.props.username.success}
+                    onTouch={this.props.username.onTouch}
+                    placeholder={this.props.username.placeHolder}
                     leftIcon="fas fa-envelope"
                     rightIcon="fas fa-exclamation-triangle"
-                    message="This email is invalid"/>
+                    message={this.props.username.errorMessage}/>
                 <FormInput
-                    label="Password"
-                    type="password"
-                    value={this.props.password}
+                    label={this.props.password.label}
+                    type={this.props.password.type}
+                    value={this.props.password.value}
                     onFormInput={this.onPasswordInput}
-                    success={false}
-                    placeholder="Please type in a password"
+                    success={this.props.password.success}
+                    onTouch={this.props.password.onTouch}
+                    placeholder={this.props.password.placeHolder}
                     leftIcon="fas fa-key"
                     rightIcon="fas fa-exclamation-triangle"
-                    message="password too short"/> {cfmPassword}
+                    message={this.props.password.errorMessage}/> {cfmPassword}
                 <a className="button is-fullwidth is-success" onClick={this.onFormSubmit}>{
                         this.props.signUp
                             ? "Signup"
