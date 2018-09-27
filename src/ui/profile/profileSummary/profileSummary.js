@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 const ProfileSummary = (props) => {
     const Fragment = React.Fragment;
@@ -13,7 +14,7 @@ const ProfileSummary = (props) => {
             <div className="media-content">
                 <div className="content">
                     <p>
-                        <strong>{props.user}</strong>
+                        <strong>{props.user.username}</strong>
                         <br/>
                         <small>@username</small>
                         <br/>
@@ -55,4 +56,10 @@ const ProfileSummary = (props) => {
     );
 };
 
-export default ProfileSummary;
+const mapStateToProps = state => {
+    return {
+        user: state.user.currentUser
+    }
+}
+
+export default connect(mapStateToProps)(ProfileSummary);

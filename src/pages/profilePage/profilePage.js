@@ -2,7 +2,6 @@ import React from 'react';
 import ProfileSummary from "../../ui/profile/profileSummary/profileSummary";
 import ProfileNavigations from "../../ui/profile/profileNavigations/profileNavigations";
 import ProfileStats from "../../ui/profile/profileStats/profileStats";
-import {connect} from "react-redux";
 
 const ProfilePage = (props) => {
     return (
@@ -37,10 +36,4 @@ const ProfilePage = (props) => {
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        currentUser: state.user.currentUser
-    }
-}
-
-export default connect(mapStateToProps)(ProfilePage);
+export default ProfilePage;

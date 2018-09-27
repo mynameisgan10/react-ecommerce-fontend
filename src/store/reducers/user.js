@@ -19,7 +19,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.USER_SIGNUP_FAIL:
             return utilities.updateObject(state,{authenticated: false})
         case actionTypes.POPULATE_USER_INFO:
-            return utilities.updateObject(state,{currentUser: action.user})
+            return utilities.updateObject(state,{currentUser: {username: action.user}})
         case actionTypes.LOGOUT:
             return utilities.updateObject(state,{authenticated: false})
         case actionTypes.LOGOUT_FAIL:
