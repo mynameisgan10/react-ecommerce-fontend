@@ -122,11 +122,11 @@ const logout_fail = () => {
     return {type: actions.LOGOUT_FAIL}
 }
 
-
-
 const resetForm = () => {
     return {
         type: actions.RESET_FORM
     }
 }
+
+
 

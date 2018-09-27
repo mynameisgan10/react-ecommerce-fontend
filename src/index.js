@@ -8,12 +8,18 @@ import user from "./store/reducers/user";
 import item from "./store/reducers/item";
 import newItem from "./store/reducers/newItem";
 import loginForm from "./store/reducers/loginForm";
+import profile from "./store/reducers/profile";
 import {createStore, compose, applyMiddleware, combineReducers} from 'redux';
 import thunk from 'redux-thunk';
 
-const reducers = combineReducers(
-    {modal: modal, user: user, item: item, newItem: newItem, loginForm: loginForm}
-);
+const reducers = combineReducers({
+    modal: modal,
+    user: user,
+    item: item,
+    newItem: newItem,
+    loginForm: loginForm,
+    profile: profile
+});
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 

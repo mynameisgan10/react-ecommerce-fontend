@@ -22,6 +22,8 @@ export const TRY_LOGOUT = 'TRY_LOGOUT';
 export const LOGOUT = 'LOGOUT';
 export const LOGOUT_FAIL = 'LOGOUT_FAIL';
 export const RESET_FORM = 'RESET_FORM';
+export const GET_USER_PROFILE = 'GET_USER_PROFILE';
+export const POPULATE_PROFILE_ITEMS = 'POPULATE_PROFILE_ITEMS';
 
 
 export const ITEM_DROP_IMAGE = 'ITEM_DROP_IMAGE';
