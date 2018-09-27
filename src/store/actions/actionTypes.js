@@ -21,6 +21,7 @@ export const TRY_AUTO_LOGIN_FAIL= 'TRY_AUTO_LOGIN_FAIL';
 export const TRY_LOGOUT = 'TRY_LOGOUT';
 export const LOGOUT = 'LOGOUT';
 export const LOGOUT_FAIL = 'LOGOUT_FAIL';
+export const RESET_FORM = 'RESET_FORM';
 
 
 export const ITEM_DROP_IMAGE = 'ITEM_DROP_IMAGE';

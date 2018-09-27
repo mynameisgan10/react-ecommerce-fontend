@@ -5,6 +5,9 @@ import * as actions from "../../store/actions/index";
 import {connect} from "react-redux";
 
 class LoginFormPopup extends Component {
+    componentDidMount() {
+        console.log("showing form");
+    }
     onFormSubmit = () => {
         if (this.props.signUp) {
             this

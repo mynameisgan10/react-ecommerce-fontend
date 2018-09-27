@@ -15,6 +15,7 @@ export const user_login = (user) => {
                     dispatch(toggleModal());
                     dispatch(user_login_success());
                     dispatch(populate_user_info(response.data.user));
+                    dispatch(resetForm());
                 }else{
                     dispatch(user_login_fail());
                 }
@@ -51,7 +52,8 @@ export const user_signup = (user) => {
             .then(response => {
                 if(response.data.success){
                     dispatch(toggleModal());
-                    dispatch(user_signup_success())
+                    dispatch(user_signup_success());
+                    dispatch(resetForm());
                 }else{
                     console.log(response.data.message);
                     dispatch(user_signup_fail())
@@ -76,6 +78,7 @@ export const try_auto_login = () => {
                 if(response.data.success){
                     dispatch(user_login_success());
                     dispatch(populate_user_info(response.data.user));
+                    dispatch(resetForm());
                 }else{
                     dispatch(user_login_fail());
                 }
@@ -117,5 +120,13 @@ const logout = () => {
 }
 const logout_fail = () => {
     return {type: actions.LOGOUT_FAIL}
+}
+
+
+
+const resetForm = () => {
+    return {
+        type: actions.RESET_FORM
+    }
 }
 

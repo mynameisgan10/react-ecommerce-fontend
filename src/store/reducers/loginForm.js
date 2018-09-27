@@ -53,6 +53,48 @@ const reducer = (state = initialState, action) => {
             return utilities.updateObject(state, newValue)
         case actionTypes.TOGGLE_SIGNUP:
             return utilities.updateObject(state,{signUp: !state.signUp})
+        case actionTypes.RESET_FORM:
+            const resetForm = {
+                username: {
+                    label: 'username',
+                    maxLength: 32,
+                    minLength: 4,
+                    required: true,
+                    onTouch: false,
+                    value: '',
+                    success: false,
+                    type: 'text',
+                    placeHolder: 'Email Input',
+                    errorMessage: ''
+                },
+                password: {
+                    label: 'password',
+                    maxLength: 32,
+                    minLength: 8,
+                    required: true,
+                    onTouch: false,
+                    value: '',
+                    success: false,
+                    type: 'password',
+                    placeHolder: 'Please type in a password',
+                    errorMessage: ''
+                },
+                confirmPassword: {
+                    label: 'confirm password',
+                    maxLength: 32,
+                    minLength: 8,
+                    required: true,
+                    onTouch: false,
+                    value: '',
+                    success: false,
+                    type: 'password',
+                    placeHolder: 'Confirm Password',
+                    errorMessage: ''
+                },
+                formValidity: false,
+                signUp: false
+            }
+            return utilities.updateObject(state,resetForm)
         case actionTypes.CHECK_FORM_VALIDITY:
         // todo: outsource the check form validity out
             let valid = true
