@@ -8,7 +8,8 @@ export {
     user_login,
     user_logout,
     user_signup,
-    try_auto_login
+    try_auto_login,
+    try_logout
 } from "./user"
 
 export {

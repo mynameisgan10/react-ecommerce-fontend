@@ -20,6 +20,10 @@ const reducer = (state = initialState, action) => {
             return utilities.updateObject(state,{authenticated: false})
         case actionTypes.POPULATE_USER_INFO:
             return utilities.updateObject(state,{currentUser: action.user})
+        case actionTypes.LOGOUT:
+            return utilities.updateObject(state,{authenticated: false})
+        case actionTypes.LOGOUT_FAIL:
+            return state
     }
     return state
 }

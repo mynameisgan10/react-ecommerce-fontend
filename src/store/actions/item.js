@@ -51,7 +51,7 @@ const get_items_fail = () => {
 
 export const get_single_item = (itemid) => {
     return dispatch => {
-        axios.get("http://localhost:3000/api/v1/item/" + itemid)
+        axios.get("http://localhost:3000/api/v1/item/" + itemid,{withCredentials:true})
             .then(response => {
                 if (response.data.success) {
                     console.log("got single item");

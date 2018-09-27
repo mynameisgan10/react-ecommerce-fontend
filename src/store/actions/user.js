@@ -74,12 +74,9 @@ export const try_auto_login = () => {
         axios.post("http://localhost:3000/api/v1/users/me",{},{withCredentials:true, xsrfCookieName:'xsrf',xsrfHeaderName: 'X-XSRF-TOKEN'})
             .then(response => {
                 if(response.data.success){
-                    console.log("great");
-                    console.log(response.data.message);
                     dispatch(user_login_success());
                     dispatch(populate_user_info(response.data.user));
                 }else{
-                    console.log("failed");
                     dispatch(user_login_fail());
                 }
             })
@@ -95,5 +92,30 @@ const try_auto_login_success = () => {
 
 const try_auto_login_fail = () => {
     return {type: actions.TRY_AUTO_LOGIN_FAIL}
+}
+
+
+export const try_logout = () => {
+    return dispatch => {
+        axios.post("http://localhost:3000/api/v1/users/logout",{},{withCredentials:true, xsrfCookieName:'xsrf',xsrfHeaderName: 'X-XSRF-TOKEN'})
+            .then(response => {
+                if(response.data.success){
+                    console.log(response.data.message);
+                    dispatch(logout());
+                }else{
+                    dispatch(logout_fail());
+                }
+            })
+            .catch(err => {
+                dispatch(logout_fail());
+            })
+    }
+}
+
+const logout = () => {
+    return {type: actions.LOGOUT}
+}
+const logout_fail = () => {
+    return {type: actions.LOGOUT_FAIL}
 }
 

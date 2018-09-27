@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from "react-redux";
+import * as actions from "../../store/actions/index";
 
 const navbar = (props) => {
     const Fragment = React.Fragment;
@@ -52,8 +53,8 @@ const navbar = (props) => {
                             href="https://bulma.io/documentation/layout/container/">
                             Layout
                         </a>
-                        <a className="navbar-item" href="https://bulma.io/documentation/form/general/">
-                            Form
+                        <a className="navbar-item" onClick={props.onLogOut}>
+                            Logout
                         </a>
                     </div>
                 </div>
@@ -108,4 +109,10 @@ const mapStateToProps = state => {
     return {authenticated: state.user.authenticated}
 }
 
-export default connect(mapStateToProps, null)(navbar);
+const mapDispatchToProps = dispatch => {
+    return {
+        onLogOut: () => dispatch(actions.try_logout())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(navbar);

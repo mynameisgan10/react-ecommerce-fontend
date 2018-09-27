@@ -1,7 +1,11 @@
+
+// modal
 export const SHOW_MODAL = 'SHOW_MODAL';
 export const HIDE_MODAL = 'HIDE_MODAL';
 export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 
+
+// user
 export const USER_SIGNUP = 'USER_SIGNUP';
 export const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS';
 export const USER_SIGNUP_FAIL = 'USER_SIGNUP_FAIL'
@@ -11,10 +15,12 @@ export const USER_LOGGING_IN = 'USE_LOGGING_IN';
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
 export const USER_LOGIN_FAIL = 'USER_LOGIN_FAIL';
 export const USER_LOGOUT = 'USER_LOGOUT';
-
 export const TRY_AUTO_LOGIN = 'TRY_AUTO_LOGIN';
 export const TRY_AUTO_LOGIN_SUCCESS= 'TRY_AUTO_LOGIN_SUCCESS';
 export const TRY_AUTO_LOGIN_FAIL= 'TRY_AUTO_LOGIN_FAIL';
+export const TRY_LOGOUT = 'TRY_LOGOUT';
+export const LOGOUT = 'LOGOUT';
+export const LOGOUT_FAIL = 'LOGOUT_FAIL';
 
 
 export const ITEM_DROP_IMAGE = 'ITEM_DROP_IMAGE';
