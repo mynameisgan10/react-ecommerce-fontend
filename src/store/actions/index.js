@@ -31,3 +31,7 @@ export {
     formInput,
     toggleSignup
 } from "./loginForm"
+
+export {
+    getUserProfile
+} from "./profile"

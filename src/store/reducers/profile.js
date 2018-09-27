@@ -8,7 +8,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.POPULATE_PROFILE_ITEMS:
-            utilities.updateObject(state,{profileItems: action.items})
+            return utilities.updateObject(state,{profileItems: action.items})
 
     }
     return state
