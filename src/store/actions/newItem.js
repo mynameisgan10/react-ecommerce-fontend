@@ -43,10 +43,10 @@ export const list_new_item = (newItem) => {
     return dispatch => {
         console.log(newItem);
         axios
-            .post("http://localhost:3000/api/v1/item/new", newItem)
+            .post("http://localhost:3000/api/v1/item/new", newItem,{withCredentials:true, xsrfCookieName:'xsrf',xsrfHeaderName: 'X-XSRF-TOKEN'})
             .then(response => {
                 if (response.data.success) {
-                    dispatch(list_new_item_success());
+                    dispatch(list_new_item_success(response.data.item_id));
                 } else {
                     dispatch(list_new_item_fail());
                 }
@@ -57,8 +57,8 @@ export const list_new_item = (newItem) => {
         }
 }
 
-const list_new_item_success = () => {
-    return {type: actions.LIST_NEW_ITEM_SUCCESS}
+const list_new_item_success = (newItemId) => {
+    return {type: actions.LIST_NEW_ITEM_SUCCESS, newItemId: newItemId}
 }
 
 const list_new_item_fail = () => {

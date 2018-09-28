@@ -19,7 +19,9 @@ const initialState = {
     thirdImageRef: "",
     fourthImageRef: "",
     currentImage: 0,
-    propertyNames: ["firstImage","secondImage","thirdImage","fourthImage"]
+    propertyNames: ["firstImage","secondImage","thirdImage","fourthImage"],
+    newItemId: "",
+    redirect: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -42,6 +44,8 @@ const reducer = (state = initialState, action) => {
             return utilities.updateObject(state,{selectedCategory: action.id})
         case actionTypes.SELECT_ITEM_CONDITION:
             return utilities.updateObject(state,{condition: action.value})
+        case actionTypes.LIST_NEW_ITEM_SUCCESS:
+            return utilities.updateObject(state,{redirect: true, newItemId: action.newItemId})
 
     }
     return state
