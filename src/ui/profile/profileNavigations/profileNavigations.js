@@ -2,15 +2,18 @@ import React, {Component} from 'react';
 import Products from "../../products/products";
 import Follows from "../../follows/follows";
 // import ProfileNavigations from "./ProfileNavigations.css";
-import {connect} from'react-redux';
+import {Route} from "react-router-dom"
+import {connect} from 'react-redux';
 import * as actions from "../../../store/actions/index"
+import {withRouter} from 'react-router';
+import {Link, Redirect} from 'react-router-dom';
 
 class ProfileNavigations extends Component {
-    componentDidMount(){
-        console.log("this is profile navigations");
-        this.props.getProfileItems();
+    componentDidMount() {
+        this
+            .props
+            .getProfileItems();
     }
-
 
     render() {
         const Fragment = React.Fragment;
@@ -20,29 +23,44 @@ class ProfileNavigations extends Component {
                 <div className="tabs is-centered">
                     <ul>
                         <li className="is-active">
-                            <a>Listings</a>
+                            <Link to='/profile/listings'>Listings</Link>
                         </li>
                         <li>
-                            <a>Followers</a>
+                            <Link to='/profile/followers'>Followers</Link>
                         </li>
                         <li>
-                            <a>Following</a>
+                            <Link to='/profile/following'>Following</Link>
                         </li>
                         <li>
-                            <a>Saved</a>
+                            <Link to='/profile/saved'>Saved</Link>
                         </li>
                     </ul>
                 </div>
                 <div className="columns">
                     <div className="column is-12">
-
-                        <Products
-                            selling={false}
-                            items={this.props.items}/> {/* <Follows />
-                    <Follows />
-                    <Follows /> */
-                        }
-
+                        {/* <Products selling={false} items={this.props.items}/> */}
+                        <Route
+                            path="/profile/listings"
+                            exact="exact"
+                            render={() => <Products selling={false} items={this.props.items}/>
+                            }
+                        />
+                        <Route
+                            path="/profile/following"
+                            exact="exact"
+                            render={() => <Follows
+                                followings={[
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1
+                                ]}/>
+                            }
+                        />
+                        <Route path="/profile" render={() => <Redirect to="/profile/listings"/>}/>
                     </div>
                 </div>
             </Fragment>
@@ -52,9 +70,7 @@ class ProfileNavigations extends Component {
 };
 
 const mapStateToProps = state => {
-    return {
-        items: state.profile.profileItems
-    }
+    return {items: state.profile.profileItems}
 }
 
 const mapDispatchToProps = dispatch => {
@@ -63,4 +79,6 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(ProfileNavigations);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(
+    ProfileNavigations
+));

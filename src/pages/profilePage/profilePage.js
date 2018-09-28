@@ -8,7 +8,7 @@ const ProfilePage = (props) => {
         // <div     className="columns is-multiline"     style={{         marginTop:
         // "20px"     }}>     <ProfileSummary/>     <ProfileNavigations/> <ProfileStats
         // /> </div>
-
+        
         <div className="columns is-centered">
             <div className="column is-12">
                 <div

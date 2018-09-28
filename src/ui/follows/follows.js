@@ -1,17 +1,15 @@
 import React from 'react';
-import Styles from "./follows.css";
+import Follow from "./follow/follow";
 
-const Follows = () => {
+const Follows = (props) => {
+    const output = props
+        .followings
+        .map(following => <Follow/>)
     return (
-        <div className="column is-3">
-            <div className="box has-text-centered">
-                <figure className={["image",Styles.centerImage].join(" ")}>
-                    <img
-                        className="is-rounded"
-                        src="https://bulma.io/images/placeholders/128x128.png"/>
-                </figure>
-                <h1>Test</h1>
-            </div>
+
+        <div className="columns is-multiline">
+            {output}
+
         </div>
     );
 };
