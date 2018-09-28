@@ -10,10 +10,9 @@ const reducer = (state = initialState, action) => {
         case actionTypes.POPULATE_PROFILE_ITEMS:
             return utilities.updateObject(state, {profileItems: action.items})
         case actionTypes.DELETE_ITEM_SUCCESS:
-            const newProfileItems = profileItems.splice();
+            const newProfileItems = state.profileItems.splice();
             newProfileItems.splice(action.index);
             return utilities.updateObject(state,{profileItems: newProfileItems})
-
         case actionTypes.DELETE_ITEM_FAIL:
             return state
 

@@ -4,7 +4,7 @@ import * as actions from "../actions/actionTypes";
 export const getUserProfile = () => {
     return dispatch => {
         axios
-            .get("http://localhost:3000/api/v1/item/user/1", {
+            .get("http://localhost:3000/api/v1/item/user/me", {
                 withCredentials: true,
                 xsrfCookieName: 'xsrf',
                 xsrfHeaderName: 'X-XSRF-TOKEN'
@@ -26,15 +26,17 @@ const populateProfileItems = (items) => {
 export const deleteItem = (productid, index) => {
     return dispatch => {
         axios
-            .delete("http://localhost:3000/api/v1/item/delete/" + productid, {}, {
+            .delete("http://localhost:3000/api/v1/item/delete/" + productid, {
                 withCredentials: true,
                 xsrfCookieName: 'xsrf',
                 xsrfHeaderName: 'X-XSRF-TOKEN'
             })
             .then(response => {
                 if (response.data.success) {
+                    console.log(index);
                     dispatch(deleteItemSuccess(index))
                 } else {
+                    console.log("in the else block")
                     dispatch(deleteItemFail())
                 }
             })
