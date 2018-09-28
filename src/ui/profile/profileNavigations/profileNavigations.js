@@ -14,26 +14,42 @@ class ProfileNavigations extends Component {
             .props
             .getProfileItems();
     }
+    state = {
+        activeIndex: 0,
+        paths: [
+            {
+                link: '/profile/listings',
+                name: 'Listings',
+                active: true
+            }, {
+                link: '/profile/followers',
+                name: 'Followers',
+                active: false
+            }, {
+                link: '/profile/following',
+                name: 'Following',
+                active: false
+            }, {
+                link: '/profile/saved',
+                name: 'Saved',
+                active: false
+            }
+        ]
+    }
 
     render() {
+        const navigations = this.state.paths.map(
+            (path, index) => <li className={path.active ? "is-active" : ""}>
+                <Link to={path.link}>{path.name}</Link>
+            </li>
+        )
         const Fragment = React.Fragment;
         return (
 
             <Fragment>
                 <div className="tabs is-centered">
                     <ul>
-                        <li className="is-active">
-                            <Link to='/profile/listings'>Listings</Link>
-                        </li>
-                        <li>
-                            <Link to='/profile/followers'>Followers</Link>
-                        </li>
-                        <li>
-                            <Link to='/profile/following'>Following</Link>
-                        </li>
-                        <li>
-                            <Link to='/profile/saved'>Saved</Link>
-                        </li>
+                        {navigations}
                     </ul>
                 </div>
                 <div className="columns">
@@ -60,7 +76,27 @@ class ProfileNavigations extends Component {
                                 ]}/>
                             }
                         />
-                        <Route path="/profile" render={() => <Redirect to="/profile/listings"/>}/>
+                        <Route
+                            path="/profile/followers"
+                            exact="exact"
+                            render={() => <Follows
+                                followings={[
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1
+                                ]}/>
+                            }
+                        />
+                        <Route
+                            path="/profile"
+                            exact="exact"
+                            render={() => <Redirect to="/profile/listings"/>
+                            }
+                        />
                     </div>
                 </div>
             </Fragment>
