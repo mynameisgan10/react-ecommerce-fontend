@@ -3,7 +3,8 @@ import * as utilities from "../utilities";
 
 const initialState = {
     authenticated: false,
-    currentUser: {}
+    currentUser: {},
+    logout: false //set logout to true to redirect to home
 }
 
 const reducer = (state = initialState, action) => {
@@ -21,7 +22,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.POPULATE_USER_INFO:
             return utilities.updateObject(state,{currentUser: {username: action.user}})
         case actionTypes.LOGOUT:
-            return utilities.updateObject(state,{authenticated: false})
+            return utilities.updateObject(state,{authenticated: false,logout: true})
         case actionTypes.LOGOUT_FAIL:
             return state
     }
