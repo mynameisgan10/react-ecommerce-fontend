@@ -13,10 +13,7 @@ class ProfileNavigations extends Component {
         this
             .props
             .getProfileItems();
-    }
-    state = {
-        activeIndex: 0,
-        paths: [
+        const paths = [
             {
                 link: '/profile/listings',
                 name: 'Listings',
@@ -35,6 +32,12 @@ class ProfileNavigations extends Component {
                 active: false
             }
         ]
+        this.setState({
+            paths: paths
+        })
+    }
+    state = {
+        paths: []
     }
 
     render() {
