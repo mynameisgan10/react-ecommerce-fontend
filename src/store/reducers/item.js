@@ -40,9 +40,7 @@ const reducer = (state = initialState, action) => {
             const productPageItem = {
                 productPageItem: item
             }
-            console.log(productPageItem);
             return utilities.updateObject(state, productPageItem)
-
     }
     return state
 }

@@ -33,5 +33,6 @@ export {
 } from "./loginForm"
 
 export {
-    getUserProfile
+    getUserProfile,
+    deleteItem
 } from "./profile"

@@ -51,19 +51,20 @@ const get_items_fail = () => {
 
 export const get_single_item = (itemid) => {
     return dispatch => {
-        axios.get("http://localhost:3000/api/v1/item/" + itemid,{withCredentials:true})
+        axios
+            .get("http://localhost:3000/api/v1/item/" + itemid)
             .then(response => {
                 if (response.data.success) {
                     console.log("got single item");
                     dispatch(get_single_item_success(response.data.item[0]))
-                }else {
+                } else {
                     dispatch(get_single_item_fail())
                 }
             })
             .catch(err => {
                 dispatch(get_single_item_fail())
             })
-    }
+        }
 };
 
 const get_single_item_success = (item) => {
@@ -73,23 +74,10 @@ const get_single_item_fail = () => {
     return {type: actions.GET_SINGLE_ITEM_FAIL}
 }
 
-
-// export const get_item_categories = () => {
-//     return dispatch => {
-//         axios.get("http://localhost:3000/api/v1/item/categories")
-//             .then(response =>{
-//                 dispatch(populate_item_categories(response.data.results))
-//             })
-//             .catch(err => {
-//                 throw err;
-//             })
-//     }
-// }
-
-// const populate_item_categories = (categories) => {
-//     return {
-//         type: actions.POPUPLATE_ITEM_CATEGORIES,
-//         categories: categories
-//     }
-// }
-
+// export const get_item_categories = () => {     return dispatch => {
+// axios.get("http://localhost:3000/api/v1/item/categories")
+// .then(response =>{
+// dispatch(populate_item_categories(response.data.results))             })
+// .catch(err => {                 throw err;             })     } } const
+// populate_item_categories = (categories) => {     return {         type:
+// actions.POPUPLATE_ITEM_CATEGORIES,         categories: categories     } }

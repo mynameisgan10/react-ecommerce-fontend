@@ -1,24 +1,26 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import {connect} from 'react-redux';
+import * as actions from '../../../store/actions/index';
 
 const Product = (props) => {
     const Fragment = React.Fragment;
     let output = (
         <Fragment>
-            <a href="#" className="card-footer-item has-text-success">
+            <a className="card-footer-item has-text-success">
                 <i className="fas fa-check"></i>
             </a>
-            <a href="#" className="card-footer-item has-text-danger">
+            <a onClick={() => props.onDeleteItem(props.item.id,props.index)} className="card-footer-item has-text-danger">
                 <i className="fas fa-times"></i>
             </a>
         </Fragment>
     );
     if (props.selling) {
         output = (
-            <Fragment><a href="#" className="card-footer-item has-text-danger">
+            <Fragment><a className="card-footer-item has-text-danger">
                 <i className="far fa-heart"></i>
             </a>
-            <a href="#" className="card-footer-item has-text-info">
+            <a  className="card-footer-item has-text-info">
                 <i className="fas fa-bookmark"></i>
             </a>
         </Fragment>
@@ -52,4 +54,10 @@ const Product = (props) => {
     );
 };
 
-export default Product;
+const mapDispatchToProps = dispatch => {
+    return {
+        onDeleteItem: (productid,index) => dispatch(actions.deleteItem(productid,index))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Product);

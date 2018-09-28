@@ -22,10 +22,15 @@ export const TRY_LOGOUT = 'TRY_LOGOUT';
 export const LOGOUT = 'LOGOUT';
 export const LOGOUT_FAIL = 'LOGOUT_FAIL';
 export const RESET_FORM = 'RESET_FORM';
+
+//profile
 export const GET_USER_PROFILE = 'GET_USER_PROFILE';
 export const POPULATE_PROFILE_ITEMS = 'POPULATE_PROFILE_ITEMS';
+export const DELETE_ITEM = 'DELETE_ITEM';
+export const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';
+export const DELETE_ITEM_FAIL = 'DELETE_ITEM_FAIL';
 
-
+//item
 export const ITEM_DROP_IMAGE = 'ITEM_DROP_IMAGE';
 export const ITEM_NEW_IMAGE = 'ITEM_NEW_IMAGE';
 export const ITEM_DELETE_IMAGE = 'ITEM_DELETE_IMAGE';

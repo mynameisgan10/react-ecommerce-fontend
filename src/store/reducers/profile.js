@@ -8,7 +8,14 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.POPULATE_PROFILE_ITEMS:
-            return utilities.updateObject(state,{profileItems: action.items})
+            return utilities.updateObject(state, {profileItems: action.items})
+        case actionTypes.DELETE_ITEM_SUCCESS:
+            const newProfileItems = profileItems.splice();
+            newProfileItems.splice(action.index);
+            return utilities.updateObject(state,{profileItems: newProfileItems})
+
+        case actionTypes.DELETE_ITEM_FAIL:
+            return state
 
     }
     return state
