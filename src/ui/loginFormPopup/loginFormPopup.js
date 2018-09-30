@@ -13,7 +13,7 @@ class LoginFormPopup extends Component {
             this
                 .props
                 .onSignUp(
-                    {username: this.props.username.value, password: this.props.password.value, confirmpassword: this.props.confirmpassword.value}
+                    {username: this.props.username.value, password: this.props.password.value, confirmpassword: this.props.confirmPassword.value}
                 )
         } else {
             this
