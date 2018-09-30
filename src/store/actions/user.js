@@ -14,7 +14,7 @@ export const user_login = (user) => {
                 if (response.data.success) {
                     dispatch(toggleModal());
                     dispatch(user_login_success());
-                    dispatch(populate_user_info(response.data.user));
+                    dispatch(populateUserInfo(response.data.user));
                     dispatch(resetForm());
                 }else{
                     dispatch(user_login_fail());
@@ -27,7 +27,7 @@ export const user_login = (user) => {
         }
 };
 
-const populate_user_info = (user) => {
+const populateUserInfo = (user) => {
     return {
         type: actions.POPULATE_USER_INFO,
         user: user
@@ -52,21 +52,21 @@ export const user_signup = (user) => {
             .then(response => {
                 if(response.data.success){
                     dispatch(toggleModal());
-                    dispatch(user_signup_success());
+                    dispatch(userSignupSuccess());
                     dispatch(resetForm());
                 }else{
                     console.log(response.data.message);
-                    dispatch(user_signup_fail())
+                    dispatch(userSignupFail())
                 }
             }) 
     }
 }
 
-const user_signup_fail = () => {
+const userSignupFail = () => {
     return {type: actions.USER_SIGNUP_FAIL}
 }
 
-const user_signup_success = () => {
+const userSignupSuccess = () => {
     return {type: actions.USER_SIGNUP_SUCCESS}
 }
 
@@ -77,7 +77,7 @@ export const try_auto_login = () => {
             .then(response => {
                 if(response.data.success){
                     dispatch(user_login_success());
-                    dispatch(populate_user_info(response.data.user));
+                    dispatch(populateUserInfo(response.data.user));
                     dispatch(resetForm());
                 }else{
                     dispatch(user_login_fail());
@@ -106,11 +106,11 @@ export const try_logout = () => {
                     console.log(response.data.message);
                     dispatch(logout());
                 }else{
-                    dispatch(logout_fail());
+                    dispatch(logoutFail());
                 }
             })
             .catch(err => {
-                dispatch(logout_fail());
+                dispatch(logoutFail());
             })
     }
 }
@@ -118,7 +118,7 @@ export const try_logout = () => {
 const logout = () => {
     return {type: actions.LOGOUT}
 }
-const logout_fail = () => {
+const logoutFail = () => {
     return {type: actions.LOGOUT_FAIL}
 }
 
