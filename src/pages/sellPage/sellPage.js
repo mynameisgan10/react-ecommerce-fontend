@@ -6,25 +6,19 @@ import {Route, Redirect, Link} from "react-router-dom";
 import {connect} from 'react-redux';
 
 const SellPage = (props) => {
-    const Fragment = React.Fragment;
+    const Fragment = React.Fragment
     let redirect = null;
     if(props.redirect){
-        console.log("will redirect")
         redirect = <Redirect to={"/item/" + props.newItemId} />
     }
     return (
         <Fragment>
-        {redirect};
+        {redirect}
         <section className="hero">
-            {/* <h1 className="is-size-3">Photos</h1>
-            <span className="icon is-large">
-                <i className="fas fa-arrow-left"></i>
-            </span> */
-            }
             <nav className="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
                 <ul>
                     <li>
-                    <Link to="/">Home</Link>
+                        <Link to="/">Home</Link>
                     </li>
                     <li>
                         <Link to={props.match.url + "/photos"}>Photos</Link>

@@ -13,16 +13,16 @@ export const user_login = (user) => {
             .then(response => {
                 if (response.data.success) {
                     dispatch(toggleModal());
-                    dispatch(user_login_success());
+                    dispatch(userLoginSuccess());
                     dispatch(populateUserInfo(response.data.user));
                     dispatch(resetForm());
                 }else{
-                    dispatch(user_login_fail());
+                    dispatch(userLoginFail());
                 }
 
             })
             .catch(error => {
-                dispatch(user_login_fail())
+                dispatch(userLoginFail())
             })
         }
 };
@@ -34,11 +34,11 @@ const populateUserInfo = (user) => {
     }
 }
 
-const user_login_success = () => {
+const userLoginSuccess = () => {
     return {type: actions.USER_LOGIN_SUCCESS}
 }
 
-const user_login_fail = () => {
+const userLoginFail = () => {
     return {type: actions.USER_LOGIN_FAIL};
 };
 
@@ -76,11 +76,11 @@ export const try_auto_login = () => {
         axios.post("http://localhost:3000/api/v1/users/me",{},{withCredentials:true, xsrfCookieName:'xsrf',xsrfHeaderName: 'X-XSRF-TOKEN'})
             .then(response => {
                 if(response.data.success){
-                    dispatch(user_login_success());
+                    dispatch(userLoginSuccess());
                     dispatch(populateUserInfo(response.data.user));
                     dispatch(resetForm());
                 }else{
-                    dispatch(user_login_fail());
+                    dispatch(userLoginFail());
                 }
             })
             .catch(err => {
