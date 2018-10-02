@@ -19,7 +19,6 @@ const populateItemCategories = (categories) => {
 }
 
 export const newItemInfoInput = (event) => {
-    console.log(event.target.name);
     return {type: actions.NEW_ITEM_INFO_INPUT, value: event.target.value, target: event.target.name}
 }
 
@@ -41,7 +40,6 @@ export const selectItemCondition = (value) => {
 
 export const listNewItem = (newItem) => {
     return dispatch => {
-        console.log(newItem);
         axios
             .post("http://localhost:3000/api/v1/item/new", newItem, {
                 withCredentials: true,

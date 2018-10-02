@@ -5,8 +5,6 @@ import {connect} from "react-redux";
 class Description extends Component {
 
     onListItem = () => {
-        //TODO: Convert file from blob to file
-        let formData = new FormData();
         formData.append('title', this.props.title);
         formData.append('brand', this.props.brand);
         formData.append('price', this.props.price);
@@ -14,10 +12,45 @@ class Description extends Component {
         formData.append('meetup', this.props.meetup);
         formData.append('condition', this.props.condition);
         formData.append('category_id', this.props.category_id);
-        this.props.listItem(formData)
+        if (this.props.firstImage.src !== "") {
+            const firstFileImage = new File(
+                [this.props.firstImage.src],
+                Date.now() + this.props.firstImage.name,
+                {type: this.props.firstImage.type}
+            );
+            formData.append('images', firstFileImage);
+        }
+        if (this.props.secondImage.src !== "") {
+            const secondFileImage = new File(
+                [this.props.secondImage.src],
+                Date.now() + this.props.secondImage.name,
+                {type: this.props.secondImage.type}
+            );
+            formData.append('images', secondFileImage);
+        }
+        if (this.props.thirdImage.src !== "") {
+            const thirdFileImage = new File(
+                [this.props.thirdImage.src],
+                Date.now() + this.props.thirdImage.name,
+                {type: this.props.thirdImage.type}
+            );
+            formData.append('images', thirdFileImage);
+        }
+        if (this.props.fourthImage.src !== "") {
+            const fourthFileImage = new File(
+                [this.props.fourthImage.src],
+                Date.now() + this.props.fourthImage.name,
+                {type: this.props.fourthImage.type}
+            );
+            formData.append('images', fourthFileImage);
+        }
+
+        this
+            .props
+            .listItem(formData)
     }
     render() {
-        
+
         return (
             <div className="column is-12">
 
@@ -131,9 +164,7 @@ class Description extends Component {
 
                 <div className="field is-grouped is-grouped-centered">
                     <div className="control">
-                        <button
-                            className="button is-success"
-                            onClick={this.onListItem}>List It Now!</button>
+                        <button className="button is-success" onClick={this.onListItem}>List It Now!</button>
                     </div>
                     <div className="control">
                         <button className="button is-text">Cancel</button>
@@ -153,7 +184,11 @@ const mapStateToProps = state => {
         description: state.newItem.description,
         meetup: state.newItem.meetup,
         condition: state.newItem.condition,
-        category_id: state.newItem.category_id
+        category_id: state.newItem.category_id,
+        firstImage: state.newItem.firstImage,
+        secondImage: state.newItem.secondImage,
+        thirdImage: state.newItem.thirdImage,
+        fourthImage: state.newItem.fourthImage
     }
 }
 const mapDispatchToProps = dispatch => {
