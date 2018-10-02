@@ -55,7 +55,6 @@ export const userSignup = (user) => {
                     dispatch(userSignupSuccess());
                     dispatch(resetForm());
                 }else{
-                    console.log(response.data.message);
                     dispatch(userSignupFail())
                 }
             }) 

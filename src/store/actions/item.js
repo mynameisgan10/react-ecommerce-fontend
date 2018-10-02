@@ -1,7 +1,6 @@
 import * as actions from './actionTypes';
 import axios from "axios";
 
-
 export const getItems = () => {
     console.log("get_items");
     return dispatch => {
@@ -55,10 +54,54 @@ const getSingleItemFail = () => {
     return {type: actions.GET_SINGLE_ITEM_FAIL}
 }
 
-// export const get_item_categories = () => {     return dispatch => {
-// axios.get("http://localhost:3000/api/v1/item/categories")
-// .then(response =>{
-// dispatch(populate_item_categories(response.data.results))             })
-// .catch(err => {                 throw err;             })     } } const
-// populate_item_categories = (categories) => {     return {         type:
-// actions.POPUPLATE_ITEM_CATEGORIES,         categories: categories     } }
+export const likeItem = (itemid) => {
+    return dispatch => {
+        axios
+            .post("http://localhost:3000/api/v1/item/like/" + itemid, {}, {
+                withCredentials: true,
+                xsrfCookieName: 'xsrf',
+                xsrfHeaderName: 'X-XSRF-TOKEN'
+            })
+            .then(response => {
+                if (response.data.success) {
+                    dispatch(likeItemSuccess());
+                } else {
+                    dispatch(likeItemFail());
+                }
+            })
+    }
+}
+
+const likeItemSuccess = () => {
+    return {type: actions.LIKE_ITEM_SUCCESS}
+}
+
+const likeItemFail = () => {
+    return {type: actions.LIKE_ITEM_FAIL}
+}
+
+export const saveItem = (itemid) => {
+    return dispatch => {
+        axios
+            .post("http://localhost:3000/api/v1/item/save/" + itemid, {}, {
+                withCredentials: true,
+                xsrfCookieName: 'xsrf',
+                xsrfHeaderName: 'X-XSRF-TOKEN'
+            })
+            .then(response => {
+                if (response.data.success) {
+                    dispatch(saveItemSuccess())
+                } else {
+                    dispatch(saveItemFail())
+                }
+            })
+    }
+}
+
+const saveItemSuccess = () => {
+    return {type: actions.SAVE_ITEM_SUCCESS}
+}
+
+const saveItemFail = () => {
+    return {type: actions.SAVE_ITEM_FAIL}
+}
