@@ -90,7 +90,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getItemById: (itemid) => dispatch(actions.get_single_item(itemid))
+        getItemById: (itemid) => dispatch(actions.getSingleItem(itemid))
     }
 }
 

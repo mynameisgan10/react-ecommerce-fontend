@@ -21,7 +21,7 @@ const Product = (props) => {
                 <i className="far fa-heart"></i>
             </a>
             <a  className="card-footer-item has-text-info">
-                <i className="fas fa-bookmark"></i>
+                <i className="far fa-bookmark"></i>
             </a>
         </Fragment>
         )

@@ -36,7 +36,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        getItems: () => dispatch(actions.get_items())
+        getItems: () => dispatch(actions.getItems())
     }
 
 }

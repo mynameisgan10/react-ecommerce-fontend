@@ -12,8 +12,8 @@ export {
 } from "./user"
 
 export {
-    get_items,
-    get_single_item
+    getItems,
+    getSingleItem
 } from "./item"
 
 export {

@@ -21,7 +21,7 @@ export const item_created = () => {
     return {type: actions.ITEM_CREATED};
 };
 
-export const get_items = () => {
+export const getItems = () => {
     console.log("get_items");
     return dispatch => {
         axios
@@ -29,48 +29,48 @@ export const get_items = () => {
             .then(response => {
                 console.log(response.data);
                 if (response.data.success) {
-                    dispatch(get_items_success(response.data.items));
+                    dispatch(getItemsSuccess(response.data.items));
                 } else {
-                    dispatch(get_items_fail())
+                    dispatch(getItemsFail())
                 }
             })
             .catch(err => {
-                dispatch(get_items_fail())
+                dispatch(getItemsFail())
             })
 
         }
 };
 
-const get_items_success = (items) => {
+const getItemsSuccess = (items) => {
     return {type: actions.GET_ITEMS_SUCCESS, items: items};
 };
 
-const get_items_fail = () => {
+const getItemsFail = () => {
     return {type: actions.GET_ITEMS_FAIL};
 };
 
-export const get_single_item = (itemid) => {
+export const getSingleItem = (itemid) => {
     return dispatch => {
         axios
             .get("http://localhost:3000/api/v1/item/" + itemid)
             .then(response => {
                 if (response.data.success) {
                     console.log("got single item");
-                    dispatch(get_single_item_success(response.data.item[0]))
+                    dispatch(getSingleItemSuccess(response.data.item[0]))
                 } else {
-                    dispatch(get_single_item_fail())
+                    dispatch(getSingleItemFail())
                 }
             })
             .catch(err => {
-                dispatch(get_single_item_fail())
+                dispatch(getSingleItemFail())
             })
         }
 };
 
-const get_single_item_success = (item) => {
+const getSingleItemSuccess = (item) => {
     return {type: actions.GET_SINGLE_ITEM_SUCCESS, item: item}
 }
-const get_single_item_fail = () => {
+const getSingleItemFail = () => {
     return {type: actions.GET_SINGLE_ITEM_FAIL}
 }
 
