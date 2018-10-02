@@ -55,8 +55,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getCategories: () => dispatch(actions.get_item_categories()),
-        onSelectCategory: (id) => dispatch(actions.select_item_category(id))
+        getCategories: () => dispatch(actions.getItemCategories()),
+        onSelectCategory: (id) => dispatch(actions.selectItemCategory(id))
     }
 }
 

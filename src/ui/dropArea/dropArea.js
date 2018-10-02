@@ -123,7 +123,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         storeImgSrc: (src, imagename) => dispatch(
-            actions.store_image_src(src, imagename)
+            actions.storeImageSrc(src, imagename)
         )
     }
 }

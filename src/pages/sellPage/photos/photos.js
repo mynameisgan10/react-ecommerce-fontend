@@ -82,7 +82,7 @@ class Photos extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        storeImageRef: (refName,ref) => dispatch(actions.store_image_el_ref(refName,ref))
+        storeImageRef: (refName,ref) => dispatch(actions.storeImageElRef(refName,ref))
     }
 }
 

@@ -17,13 +17,13 @@ export {
 } from "./item"
 
 export {
-    get_item_categories,
-    new_item_info_input,
-    store_image_src,
-    store_image_el_ref,
-    select_item_category,
-    select_item_condition,
-    list_new_item
+    getItemCategories,
+    newItemInfoInput,
+    storeImageSrc,
+    storeImageElRef,
+    selectItemCategory,
+    selectItemCondition,
+    listNewItem
 } from "./newItem"
 
 export {

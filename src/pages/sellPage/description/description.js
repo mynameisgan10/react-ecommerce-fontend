@@ -150,12 +150,12 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        onInputChanged: (event) => dispatch(actions.new_item_info_input(event)),
+        onInputChanged: (event) => dispatch(actions.newItemInfoInput(event)),
         onSelectItemCondition: (value) => dispatch(
-            actions.select_item_condition(value)
+            actions.selectItemCondition(value)
         ),
         onListItem: (newItem) => {
-            dispatch(actions.list_new_item(newItem))
+            dispatch(actions.listNewItem(newItem))
         }
     }
 }

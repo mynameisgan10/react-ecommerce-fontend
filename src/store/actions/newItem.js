@@ -1,12 +1,12 @@
 import * as actions from './actionTypes';
 import axios from 'axios';
 
-export const get_item_categories = () => {
+export const getItemCategories = () => {
     return dispatch => {
         axios
             .get("http://localhost:3000/api/v1/item/categories")
             .then(response => {
-                dispatch(populate_item_categories(response.data.results))
+                dispatch(populateItemCategories(response.data.results))
             })
             .catch(err => {
                 throw err;
@@ -14,41 +14,41 @@ export const get_item_categories = () => {
         }
 }
 
-const populate_item_categories = (categories) => {
+const populateItemCategories = (categories) => {
     return {type: actions.POPUPLATE_ITEM_CATEGORIES, categories: categories}
 }
 
-export const new_item_info_input = (event) => {
+export const newItemInfoInput = (event) => {
     console.log(event.target.name);
     return {type: actions.NEW_ITEM_INFO_INPUT, value: event.target.value, target: event.target.name}
 }
 
-export const store_image_src = (src, imageName) => {
+export const storeImageSrc = (src, imageName) => {
     return {type: actions.STORE_IMAGE_SRC, src: src, imageName: imageName}
 }
 
-export const store_image_el_ref = (refName, ref) => {
+export const storeImageElRef = (refName, ref) => {
     return {type: actions.STORE_IMAGE_EL_REF, refName: refName, ref: ref}
 }
 
-export const select_item_category = (cat_id) => {
+export const selectItemCategory = (cat_id) => {
     return {type: actions.SELECT_ITEM_CATEGORY, id: cat_id}
 }
 
-export const select_item_condition = (value) => {
+export const selectItemCondition = (value) => {
     return {type: actions.SELECT_ITEM_CONDITION, value: value}
 }
 
-export const list_new_item = (newItem) => {
+export const listNewItem = (newItem) => {
     return dispatch => {
         console.log(newItem);
         axios
             .post("http://localhost:3000/api/v1/item/new", newItem,{withCredentials:true, xsrfCookieName:'xsrf',xsrfHeaderName: 'X-XSRF-TOKEN'})
             .then(response => {
                 if (response.data.success) {
-                    dispatch(list_new_item_success(response.data.item_id));
+                    dispatch(listNewItemSuccess(response.data.item_id));
                 } else {
-                    dispatch(list_new_item_fail());
+                    dispatch(listNewItemFail());
                 }
             })
             .catch(err => {
@@ -57,10 +57,10 @@ export const list_new_item = (newItem) => {
         }
 }
 
-const list_new_item_success = (newItemId) => {
+const listNewItemSuccess = (newItemId) => {
     return {type: actions.LIST_NEW_ITEM_SUCCESS, newItemId: newItemId}
 }
 
-const list_new_item_fail = () => {
+const listNewItemFail = () => {
     return {type: actions.LIST_NEW_ITEM_FAIL}
 }
