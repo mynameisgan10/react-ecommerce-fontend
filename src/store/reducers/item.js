@@ -14,17 +14,6 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.ITEM_NEW_IMAGE:
-            // const newImages = state     .itemImages     .split(); newImages.push("new
-            // image path or something"); return utilities.updateObject(state, {itemImages:
-            // newImages})
-            return state;
-        case actionTypes.ITEM_DELETE_IMAGE:
-            const currentImages = state
-                .itemImages
-                .split();
-            currentImages.splice(action.imageIndex);
-            return utilities.updateObject(state, {itemImages: currentImages})
         case actionTypes.GET_ITEMS_SUCCESS:
             return {
                 ...state,

@@ -1,25 +1,6 @@
 import * as actions from './actionTypes';
 import axios from "axios";
 
-export const item_new_image = () => {
-    return {type: actions.ITEM_NEW_IMAGE};
-};
-
-export const item_delete_image = () => {
-    return {type: actions.ITEM_DELETE_IMAGE};
-};
-
-export const item_create = () => {
-    return {type: actions.ITEM_CREATE};
-};
-
-export const item_creating = () => {
-    return {type: actions.ITEM_CREATING};
-};
-
-export const item_created = () => {
-    return {type: actions.ITEM_CREATED};
-};
 
 export const getItems = () => {
     console.log("get_items");
