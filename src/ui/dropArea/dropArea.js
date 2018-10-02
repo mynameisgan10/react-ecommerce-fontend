@@ -12,7 +12,6 @@ class DropArea extends Component {
 
     uploadChanged = (event) => {
         event.preventDefault();
-        console.log(this.fileUpload.current.files);
 
         const propertyname = this
             .props
@@ -23,14 +22,14 @@ class DropArea extends Component {
             .current;
 
         const {files} = this.fileUpload.current;
-        
+
         const localImageUrl = window
             .URL
             .createObjectURL(files[0]);
         img.src = localImageUrl;
         this
             .props
-            .storeImgSrc(localImageUrl, propertyname);
+            .storeImgSrc(localImageUrl, propertyname, files[0].type,files[0].name);
     }
     onDrop = (event) => {
         event.preventDefault()
@@ -42,7 +41,6 @@ class DropArea extends Component {
             .props
             .imageRef[propertyname]
             .current;
-        console.log(this.props.firstImage);
         const {files} = event.dataTransfer;
         const localImageUrl = window
             .URL
@@ -50,7 +48,7 @@ class DropArea extends Component {
         img.src = localImageUrl;
         this
             .props
-            .storeImgSrc(localImageUrl, propertyname);
+            .storeImgSrc(localImageUrl, propertyname, files[0].type,files[0].name);
     }
     onDragOver = (e) => {
         e.preventDefault();
@@ -112,8 +110,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        storeImgSrc: (src, imagename) => dispatch(
-            actions.storeImageSrc(src, imagename)
+        storeImgSrc: (src, imagename, fileType, fileName) => dispatch(
+            actions.storeImageSrc(src, imagename, fileType, fileName)
         )
     }
 }

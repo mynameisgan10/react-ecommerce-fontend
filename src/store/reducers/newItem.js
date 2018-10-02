@@ -10,16 +10,34 @@ const initialState = {
     description: "",
     meetup: "",
     categories: [],
-    firstImage: "",
-    secondImage: "",
-    thirdImage: "",
-    fourthImage: "",
+    firstImage: {
+        src: "",
+        type: "",
+        name: ""
+    },
+    secondImage: {
+        src: "",
+        type: "",
+        name: ""
+    },
+    thirdImage: {
+        src: "",
+        type: "",
+        name: ""
+    },
+    fourthImage: {
+        src: "",
+        type: "",
+        name: ""
+    },
     firstImageRef: "",
     secondImageRef: "",
     thirdImageRef: "",
     fourthImageRef: "",
     currentImage: 0,
-    propertyNames: ["firstImage","secondImage","thirdImage","fourthImage"],
+    propertyNames: [
+        "firstImage", "secondImage", "thirdImage", "fourthImage"
+    ],
     newItemId: "",
     redirect: false
 }
@@ -37,15 +55,27 @@ const reducer = (state = initialState, action) => {
             }
             return utilities.updateObject(state, newValueObject)
         case actionTypes.STORE_IMAGE_SRC:
-            return utilities.updateObject(state,{[action.imageName]: action.src,currentImage: state.currentImage + 1})
+            return utilities.updateObject(state, {
+                [action.imageName]: {
+                    src: action.src,
+                    type: action.fileType,
+                    name: action.fileName
+                },
+                currentImage: state.currentImage + 1
+            })
         case actionTypes.STORE_IMAGE_EL_REF:
-            return utilities.updateObject(state,{[action.refName+'Ref']: action.ref})
+            return utilities.updateObject(state, {
+                [action.refName + 'Ref']: action.ref
+            })
         case actionTypes.SELECT_ITEM_CATEGORY:
-            return utilities.updateObject(state,{selectedCategory: action.id})
+            return utilities.updateObject(state, {selectedCategory: action.id})
         case actionTypes.SELECT_ITEM_CONDITION:
-            return utilities.updateObject(state,{condition: action.value})
+            return utilities.updateObject(state, {condition: action.value})
         case actionTypes.LIST_NEW_ITEM_SUCCESS:
-            return utilities.updateObject(state,{redirect: true, newItemId: action.newItemId})
+            return utilities.updateObject(state, {
+                redirect: true,
+                newItemId: action.newItemId
+            })
 
     }
     return state

@@ -23,8 +23,8 @@ export const newItemInfoInput = (event) => {
     return {type: actions.NEW_ITEM_INFO_INPUT, value: event.target.value, target: event.target.name}
 }
 
-export const storeImageSrc = (src, imageName) => {
-    return {type: actions.STORE_IMAGE_SRC, src: src, imageName: imageName}
+export const storeImageSrc = (src, imageName, fileType, fileName) => {
+    return {type: actions.STORE_IMAGE_SRC, src: src, imageName: imageName, fileType: fileType, fileName: fileName}
 }
 
 export const storeImageElRef = (refName, ref) => {
