@@ -111,8 +111,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onLogin: (user) => dispatch(actions.user_login(user)),
-        onSignUp: (user) => dispatch(actions.user_signup(user)),
+        onLogin: (user) => dispatch(actions.userLogin(user)),
+        onSignUp: (user) => dispatch(actions.userSignup(user)),
         onInput: (propertyName, value) => dispatch(
             actions.formInput(propertyName, value)
         ),

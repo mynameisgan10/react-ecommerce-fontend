@@ -2,7 +2,7 @@ import * as actions from "./actionTypes";
 import {toggleModal} from "./modal";
 import axios from "axios";
 
-export const user_login = (user) => {
+export const userLogin = (user) => {
     return dispatch => {
         axios
             .post(
@@ -46,7 +46,7 @@ export const user_logout = () => {
     return {type: actions.USER_LOGOUT};
 };
 
-export const user_signup = (user) => {
+export const userSignup = (user) => {
     return dispatch => {
         axios.post('http://localhost:3000/api/v1/users/signup',user,{withCredentials: true})
             .then(response => {
@@ -70,7 +70,7 @@ const userSignupSuccess = () => {
     return {type: actions.USER_SIGNUP_SUCCESS}
 }
 
-export const try_auto_login = () => {
+export const tryAutoLogin = () => {
     console.log("trying auto login")
     return dispatch => {
         axios.post("http://localhost:3000/api/v1/users/me",{},{withCredentials:true, xsrfCookieName:'xsrf',xsrfHeaderName: 'X-XSRF-TOKEN'})
@@ -89,16 +89,7 @@ export const try_auto_login = () => {
     }
 }
 
-const try_auto_login_success = () => {
-    return {type: actions.TRY_AUTO_LOGIN_SUCCESS}
-}
-
-const try_auto_login_fail = () => {
-    return {type: actions.TRY_AUTO_LOGIN_FAIL}
-}
-
-
-export const try_logout = () => {
+export const tryLogout = () => {
     return dispatch => {
         axios.post("http://localhost:3000/api/v1/users/logout",{},{withCredentials:true, xsrfCookieName:'xsrf',xsrfHeaderName: 'X-XSRF-TOKEN'})
             .then(response => {

@@ -68,7 +68,7 @@ const mapDispatchToProps = dispatch => {
         onHideModal: () => dispatch(actions.hideModal()),
         toggleModal: () => dispatch(actions.toggleModal()),
         toggleSignup: () => dispatch(actions.toggleSignup()),
-        tryLogin: () => dispatch(actions.try_auto_login())
+        tryLogin: () => dispatch(actions.tryAutoLogin())
     }
 }
 

@@ -5,11 +5,10 @@ export {
 } from "./modal"
 
 export {
-    user_login,
-    user_logout,
-    user_signup,
-    try_auto_login,
-    try_logout
+    userLogin,
+    userSignup,
+    tryAutoLogin,
+    tryLogout
 } from "./user"
 
 export {

@@ -3,7 +3,7 @@ import DropArea from "../../../ui/dropArea/dropArea";
 import Styles from "./photos.css";
 import * as actions from "../../../store/actions/index";
 import {connect} from "react-redux";
-
+// TODO: uploading the same images is not possible
 class Photos extends Component {
     constructor(props) {
         super(props);
