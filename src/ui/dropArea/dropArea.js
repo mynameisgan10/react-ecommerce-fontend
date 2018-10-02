@@ -5,17 +5,15 @@ import {connect} from "react-redux";
 
 class DropArea extends Component {
 
-    // onDragStart = () => {     event.preventDefault()     event.stopPropagation()
-    // } onDragEnd = (e) => {     event.preventDefault() }
     constructor(props) {
         super(props);
         this.fileUpload = React.createRef();
     }
 
-    uploadChanged = (e) => {
+    uploadChanged = (event) => {
         event.preventDefault();
         console.log(this.fileUpload.current.files);
-        
+
         const propertyname = this
             .props
             .propertyNames[this.props.currentImage]
@@ -23,23 +21,20 @@ class DropArea extends Component {
             .props
             .imageRef[propertyname]
             .current;
-            
-            const { files } = this.fileUpload.current;
-            const localImageUrl =  window.URL.createObjectURL(files[0]);
-            this.props.storeImgSrc(localImageUrl,propertyname);
-            img.src = localImageUrl;
-        // const reader = new FileReader();
-        // reader.onload = (function (aImg, storeImage, imagename) {
-        //     return function (e) {
-        //         aImg.src = e.target.result;
-        //         storeImage(e.target.result, imagename);
-        //     };
-        // })(img, this.props.storeImgSrc, propertyname);
-        // reader.readAsDataURL(this.fileUpload.current.files[0]);
+
+        const {files} = this.fileUpload.current;
+        
+        const localImageUrl = window
+            .URL
+            .createObjectURL(files[0]);
+        img.src = localImageUrl;
+        this
+            .props
+            .storeImgSrc(localImageUrl, propertyname);
     }
     onDrop = (event) => {
         event.preventDefault()
-        
+
         const propertyname = this
             .props
             .propertyNames[this.props.currentImage]
@@ -48,19 +43,14 @@ class DropArea extends Component {
             .imageRef[propertyname]
             .current;
         console.log(this.props.firstImage);
-        const { files } = event.dataTransfer;
-        const localImageUrl =  window.URL.createObjectURL(files[0]);
+        const {files} = event.dataTransfer;
+        const localImageUrl = window
+            .URL
+            .createObjectURL(files[0]);
         img.src = localImageUrl;
-        this.props.storeImgSrc(localImageUrl,propertyname);
-        // const reader = new FileReader();
-        // reader.onload = (function (aImg, storeImage, imagename) {
-        //     return function (e) {
-        //         storeImage(e.target.result, imagename);
-        //         aImg.src = e.target.result;
-                
-        //     };
-        // })(img, this.props.storeImgSrc, propertyname);
-        // reader.readAsDataURL(e.dataTransfer.files[0]);
+        this
+            .props
+            .storeImgSrc(localImageUrl, propertyname);
     }
     onDragOver = (e) => {
         e.preventDefault();

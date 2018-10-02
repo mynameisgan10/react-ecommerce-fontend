@@ -43,7 +43,14 @@ export const listNewItem = (newItem) => {
     return dispatch => {
         console.log(newItem);
         axios
-            .post("http://localhost:3000/api/v1/item/new", newItem,{withCredentials:true, xsrfCookieName:'xsrf',xsrfHeaderName: 'X-XSRF-TOKEN'})
+            .post("http://localhost:3000/api/v1/item/new", newItem, {
+                withCredentials: true,
+                xsrfCookieName: 'xsrf',
+                xsrfHeaderName: 'X-XSRF-TOKEN',
+                header: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
             .then(response => {
                 if (response.data.success) {
                     dispatch(listNewItemSuccess(response.data.item_id));
