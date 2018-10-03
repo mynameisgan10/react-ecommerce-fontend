@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 class Description extends Component {
 
     onListItem = () => {
+        const formData = new FormData();
         formData.append('title', this.props.title);
         formData.append('brand', this.props.brand);
         formData.append('price', this.props.price);
@@ -12,42 +13,55 @@ class Description extends Component {
         formData.append('meetup', this.props.meetup);
         formData.append('condition', this.props.condition);
         formData.append('category_id', this.props.category_id);
+        const fileReader = new FileReader();
         if (this.props.firstImage.src !== "") {
-            const firstFileImage = new File(
-                [this.props.firstImage.src],
-                Date.now() + this.props.firstImage.name,
-                {type: this.props.firstImage.type}
-            );
-            formData.append('images', firstFileImage);
-        }
-        if (this.props.secondImage.src !== "") {
-            const secondFileImage = new File(
-                [this.props.secondImage.src],
-                Date.now() + this.props.secondImage.name,
-                {type: this.props.secondImage.type}
-            );
-            formData.append('images', secondFileImage);
-        }
-        if (this.props.thirdImage.src !== "") {
-            const thirdFileImage = new File(
-                [this.props.thirdImage.src],
-                Date.now() + this.props.thirdImage.name,
-                {type: this.props.thirdImage.type}
-            );
-            formData.append('images', thirdFileImage);
-        }
-        if (this.props.fourthImage.src !== "") {
-            const fourthFileImage = new File(
-                [this.props.fourthImage.src],
-                Date.now() + this.props.fourthImage.name,
-                {type: this.props.fourthImage.type}
-            );
-            formData.append('images', fourthFileImage);
+            console.log("in the damn block");
+            var req = new XMLHttpRequest();
+            req.open("GET", this.props.firstImage.src, true);
+            req.responseType = "arraybuffer";
+            req.onload = (event) => {
+                console.log("in state change");
+                if (req.readyState == 4 && req.status == 200) {
+                    console.log(req.response);
+                    const file = new File(
+                        [req.response],
+                        Date.now() + this.props.firstImage.name,
+                        {
+                            type: this.props.firstImage.type,
+                            lastModified: new Date()
+                        }
+                    );
+                    console.log(file);
+                    console.log(formData);
+                    console.log("appended");
+                    formData.append("images", file);
+                    this
+                        .props
+                        .listItem(formData)
+                }
+            };
+
+            req.send(null);
+
         }
 
-        this
-            .props
-            .listItem(formData)
+        // if (this.props.secondImage.src !== "") {     const secondFileImage = new
+        // File(         [fileReader.readAsArrayBuffer(this.props.secondImage.src)],
+        // Date.now() + this.props.secondImage.name,         {             type:
+        // this.props.secondImage.type,             lastModified: new Date()         }
+        // );     formData.append('images', secondFileImage); } if
+        // (this.props.thirdImage.src !== "") {     const thirdFileImage = new File(
+        // [fileReader.readAsArrayBuffer(this.props.thirdImage.src)],         Date.now()
+        // + this.props.thirdImage.name,         {             type:
+        // this.props.thirdImage.type,             lastModified: new Date()         } );
+        // formData.append('images', thirdFileImage); } if (this.props.fourthImage.src
+        // !== "") {     const fourthFileImage = new File(
+        // [fileReader.readAsArrayBuffer(this.props.fourthImage.src)], Date.now() +
+        // this.props.fourthImage.name,         {             type:
+        // this.props.fourthImage.type,             lastModified: new Date()         }
+        // );     console.log(fourthFileImage);     formData.append('images',
+        // fourthFileImage); }
+
     }
     render() {
 
