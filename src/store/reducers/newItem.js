@@ -76,6 +76,47 @@ const reducer = (state = initialState, action) => {
                 redirect: true,
                 newItemId: action.newItemId
             })
+        case actionTypes.RESET_NEW_ITEM_FORM:
+            return {
+                title: "",
+                condition: "New",
+                brand: "",
+                price: "",
+                selectedCategory: null,
+                description: "",
+                meetup: "",
+                categories: [],
+                firstImage: {
+                    src: "",
+                    type: "",
+                    name: ""
+                },
+                secondImage: {
+                    src: "",
+                    type: "",
+                    name: ""
+                },
+                thirdImage: {
+                    src: "",
+                    type: "",
+                    name: ""
+                },
+                fourthImage: {
+                    src: "",
+                    type: "",
+                    name: ""
+                },
+                firstImageRef: "",
+                secondImageRef: "",
+                thirdImageRef: "",
+                fourthImageRef: "",
+                currentImage: 0,
+                propertyNames: [
+                    "firstImage", "secondImage", "thirdImage", "fourthImage"
+                ],
+                newItemId: "",
+                redirect: false
+            }
 
     }
     return state

@@ -52,6 +52,7 @@ export const listNewItem = (newItem) => {
             .then(response => {
                 if (response.data.success) {
                     dispatch(listNewItemSuccess(response.data.item_id));
+                    dispatch(resetNewItemForm());
                 } else {
                     dispatch(listNewItemFail());
                 }
@@ -68,4 +69,10 @@ const listNewItemSuccess = (newItemId) => {
 
 const listNewItemFail = () => {
     return {type: actions.LIST_NEW_ITEM_FAIL}
+}
+
+const resetNewItemForm = () => {
+    return {
+        type: actions.RESET_NEW_ITEM_FORM
+    }
 }
