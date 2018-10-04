@@ -16,12 +16,20 @@ const Product = (props) => {
         </Fragment>
     );
     if (props.selling) {
+        let like = ["far", "fa-heart"];
+        if(props.liked){
+            like = ["fas", "fa-heart"];
+        }
+        let bookmark = ["far", "fa-bookmark"];
+        if(props.bookmarked){
+            bookmark = ["fas", "fa-bookmark"];
+        }
         output = (
-            <Fragment><a className="card-footer-item has-text-danger">
-                <i className="far fa-heart"></i>
+            <Fragment><a onClick={() => props.onLikeItem(props.item.id,props.index)} className="card-footer-item has-text-danger">
+                <i className={like.join(' ')}></i>
             </a>
-            <a  className="card-footer-item has-text-info">
-                <i className="far fa-bookmark"></i>
+            <a  onClick={() => props.onSaveItem(props.item.id,props.index)} className="card-footer-item has-text-info">
+                <i className={bookmark.join(' ')}></i>
             </a>
         </Fragment>
         )
@@ -56,6 +64,8 @@ const Product = (props) => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        onSaveItem: (productid,index) => dispatch(actions.saveItem(productid,index)),
+        onLikeItem: (productid,index) => dispatch(actions.likeItem(productid,index)),
         onDeleteItem: (productid,index) => dispatch(actions.deleteItem(productid,index))
     }
 }

@@ -13,7 +13,9 @@ export {
 
 export {
     getItems,
-    getSingleItem
+    getSingleItem,
+    likeItem,
+    saveItem
 } from "./item"
 
 export {

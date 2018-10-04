@@ -30,6 +30,22 @@ const reducer = (state = initialState, action) => {
                 productPageItem: item
             }
             return utilities.updateObject(state, productPageItem)
+            case actionTypes.LIKE_ITEM_SUCCESS:
+                const newLikedCurrentItems = [...state.currentItems];
+                newLikedCurrentItems[action.itemIndex].liked = true;
+                return utilities.updateObject(state,{currentItems: newLikedCurrentItems});
+            case actionTypes.LIKE_ITEM_FAIL:
+                const newUnlikedCurrentItems = [...state.currentItems];
+                newUnlikedCurrentItems[action.itemIndex].liked = false;
+                return utilities.updateObject(state,{currentItems: newUnlikedCurrentItems});
+            case actionTypes.SAVE_ITEM_SUCCESS:
+                const newSavedCurrentItems = [...state.currentItems];
+                newSavedCurrentItems[action.itemIndex].bookmarked = true;
+                return utilities.updateObject(state,{currentItems: newSavedCurrentItems});
+            case actionTypes.SAVE_ITEM_FAIL:
+                const newUnsavedCurrentItems = [...state.currentItems];
+                newUnlikedCurrentItems[action.itemIndex].bookmarked = false;
+                return utilities.updateObject(state,{currentItems: newUnsavedCurrentItems})
     }
     return state
 }

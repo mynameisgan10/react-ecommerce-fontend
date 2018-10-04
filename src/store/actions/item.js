@@ -2,7 +2,6 @@ import * as actions from './actionTypes';
 import axios from "axios";
 
 export const getItems = () => {
-    console.log("get_items");
     return dispatch => {
         axios
             .get("http://localhost:3000/api/v1/item/categories/1")
@@ -54,7 +53,8 @@ const getSingleItemFail = () => {
     return {type: actions.GET_SINGLE_ITEM_FAIL}
 }
 
-export const likeItem = (itemid) => {
+export const likeItem = (itemid,index) => {
+    console.log(index);
     return dispatch => {
         axios
             .post("http://localhost:3000/api/v1/item/like/" + itemid, {}, {
@@ -64,23 +64,24 @@ export const likeItem = (itemid) => {
             })
             .then(response => {
                 if (response.data.success) {
-                    dispatch(likeItemSuccess());
+                    dispatch(likeItemSuccess(index));
                 } else {
-                    dispatch(likeItemFail());
+                    dispatch(likeItemFail(index));
                 }
             })
     }
 }
 
-const likeItemSuccess = () => {
-    return {type: actions.LIKE_ITEM_SUCCESS}
+const likeItemSuccess = (index) => {
+    return {type: actions.LIKE_ITEM_SUCCESS, itemIndex: index}
 }
 
 const likeItemFail = () => {
-    return {type: actions.LIKE_ITEM_FAIL}
+    return {type: actions.LIKE_ITEM_FAIL, itemIndex: index}
 }
 
-export const saveItem = (itemid) => {
+export const saveItem = (itemid,index) => {
+    console.log(index);
     return dispatch => {
         axios
             .post("http://localhost:3000/api/v1/item/save/" + itemid, {}, {
@@ -90,18 +91,18 @@ export const saveItem = (itemid) => {
             })
             .then(response => {
                 if (response.data.success) {
-                    dispatch(saveItemSuccess())
+                    dispatch(saveItemSuccess(index))
                 } else {
-                    dispatch(saveItemFail())
+                    dispatch(saveItemFail(index))
                 }
             })
     }
 }
 
-const saveItemSuccess = () => {
-    return {type: actions.SAVE_ITEM_SUCCESS}
+const saveItemSuccess = (index) => {
+    return {type: actions.SAVE_ITEM_SUCCESS, itemIndex: index}
 }
 
 const saveItemFail = () => {
-    return {type: actions.SAVE_ITEM_FAIL}
+    return {type: actions.SAVE_ITEM_FAIL, itemIndex: index}
 }

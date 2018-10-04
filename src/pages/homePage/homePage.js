@@ -6,10 +6,11 @@ import * as actions from "../../store/actions/index";
 
 class homePage extends Component {
     componentDidMount() {
-        console.log("mounted");
         this
             .props
             .getItems();
+
+            //get items to compare whether the user has liked or saved the items;
     }
 
     render() {
