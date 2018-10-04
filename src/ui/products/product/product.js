@@ -32,7 +32,7 @@ const Product = (props) => {
                 <div className="card-image">
                     <Link to={"/item/" + props.item.id}>
                         <figure className="image is-4by3">
-                            <img src="https://picsum.photos/1280/960/?random" alt="Placeholder image"/>
+                            <img src={props.item.first_image} alt="Placeholder image"/>
                         </figure>
                     </Link>
                 </div>

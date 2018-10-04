@@ -2,14 +2,8 @@ import * as actionTypes from "../actions/actionTypes";
 import * as utilities from "../utilities";
 
 const initialState = {
-    itemName: null,
-    itemCategory: null,
-    itemPrice: null,
-    itemDesc: null,
-    itemImages: [],
     currentItems: [],
-    productPageItem: {},
-    categories: []
+    productPageItem: {}
 }
 
 const reducer = (state = initialState, action) => {
@@ -24,7 +18,13 @@ const reducer = (state = initialState, action) => {
                 itemName: action.item.name,
                 itemCategory: action.item.category_id,
                 itemPrice: action.item.price,
-                itemDesc: action.item.desc
+                itemDesc: action.item.desc,
+                itemImages: [
+                    {imageSrc: action.item.first_image},
+                    {imageSrc: action.item.second_image},
+                    {imageSrc: action.item.third_image},
+                    {imageSrc: action.item.fourth_image},
+                ]
             }
             const productPageItem = {
                 productPageItem: item
