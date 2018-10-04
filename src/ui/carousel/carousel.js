@@ -7,8 +7,17 @@ class Carousel extends Component {
         currentSlide: 0
     }
     previousSlide = () => {
+        const items = [];
+        this
+            .props
+            .items
+            .forEach(item => {
+                if (item.imageSrc) {
+                    items.push(item);
+                }
+            });
         if (this.state.currentSlide - 1 < 0) {
-            return this.setState({currentSlide: 0})
+            return this.setState({currentSlide: items.length - 1})
         }
         this.setState({
             currentSlide: this.state.currentSlide - 1
@@ -24,15 +33,15 @@ class Carousel extends Component {
                     items.push(item);
                 }
             });
-            if(this.state.currentSlide + 1 > items.length - 1 ){
-                return this.setState({
-                    currentSlide: items.length -1
-                })
-            }
-            this.setState({
-                currentSlide: this.state.currentSlide + 1
+        if (this.state.currentSlide + 1 > items.length - 1) {
+            return this.setState({
+                currentSlide: 0
             })
-        
+        }
+        this.setState({
+            currentSlide: this.state.currentSlide + 1
+        })
+
     }
     render() {
         let styles;
