@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import * as actions from "../../../store/actions/index";
 import {connect} from "react-redux";
+import axios from "axios";
 
 class Description extends Component {
 
@@ -13,54 +14,102 @@ class Description extends Component {
         formData.append('meetup', this.props.meetup);
         formData.append('condition', this.props.condition);
         formData.append('category_id', this.props.category_id);
-        const fileReader = new FileReader();
+        const requestArray = [];
         if (this.props.firstImage.src !== "") {
-            console.log("in the damn block");
-            var req = new XMLHttpRequest();
-            req.open("GET", this.props.firstImage.src, true);
-            req.responseType = "arraybuffer";
-            req.onload = (event) => {
-                console.log("in state change");
-                if (req.readyState == 4 && req.status == 200) {
-                    console.log(req.response);
+
+            const firstRequest = () => {
+                return axios(
+                    {method: "get", url: this.props.firstImage.src, responseType: 'arraybuffer'}
+                )
+            }
+            requestArray.push(firstRequest());
+        }
+        if (this.props.secondImage.src) {
+            const secondRequest = () => {
+                return axios(
+                    {method: "get", url: this.props.secondImage.src, responseType: 'arraybuffer'}
+                )
+            }
+            requestArray.push(secondRequest());
+        }
+
+        if (this.props.thirdImage.src) {
+            const thirdRequest = () => {
+                return axios(
+                    {method: "get", url: this.props.thirdImage.src, responseType: 'arraybuffer'}
+                )
+            }
+            requestArray.push(thirdRequest());
+        }
+
+        if (this.props.fourthImage.src) {
+            const fourthRequest = () => {
+                return axios(
+                    {method: "get", url: this.props.fourthImage.src, responseType: 'arraybuffer'}
+                )
+            }
+            requestArray.push(fourthRequest());
+        }
+
+        axios
+            .all(requestArray)
+            .then(axios.spread((firstImage, secondImage, thirdImage, fourthImage) => {
+                if (firstImage) {
                     const file = new File(
-                        [req.response],
+                        [firstImage.data],
                         Date.now() + this.props.firstImage.name,
                         {
                             type: this.props.firstImage.type,
                             lastModified: new Date()
                         }
                     );
-                    console.log(file);
-                    console.log(formData);
-                    console.log("appended");
                     formData.append("images", file);
-                    this
-                        .props
-                        .listItem(formData)
                 }
-            };
+                if (secondImage) {
+                    const file = new File(
+                        [secondImage.data],
+                        Date.now() + this.props.secondImage.name,
+                        {
+                            type: this.props.secondImage.type,
+                            lastModified: new Date()
+                        }
+                    );
+                    formData.append("images", file);
+                }
+                if (thirdImage) {
+                    const file = new File(
+                        [thirdImage.data],
+                        Date.now() + this.props.thirdImage.name,
+                        {
+                            type: this.props.thirdImage.type,
+                            lastModified: new Date()
+                        }
+                    );
+                    formData.append("images", file);
+                }
+                if (fourthImage) {
+                    const file = new File(
+                        [fourthImage.data],
+                        Date.now() + this.props.fourthImage.name,
+                        {
+                            type: this.props.fourthImage.type,
+                            lastModified: new Date()
+                        }
+                    );
+                    formData.append("images", file);
+                }
+                this
+                    .props
+                    .listItem(formData)
 
-            req.send(null);
+            }))
 
-        }
-
-        // if (this.props.secondImage.src !== "") {     const secondFileImage = new
-        // File(         [fileReader.readAsArrayBuffer(this.props.secondImage.src)],
-        // Date.now() + this.props.secondImage.name,         {             type:
-        // this.props.secondImage.type,             lastModified: new Date()         }
-        // );     formData.append('images', secondFileImage); } if
-        // (this.props.thirdImage.src !== "") {     const thirdFileImage = new File(
-        // [fileReader.readAsArrayBuffer(this.props.thirdImage.src)],         Date.now()
-        // + this.props.thirdImage.name,         {             type:
-        // this.props.thirdImage.type,             lastModified: new Date()         } );
-        // formData.append('images', thirdFileImage); } if (this.props.fourthImage.src
-        // !== "") {     const fourthFileImage = new File(
-        // [fileReader.readAsArrayBuffer(this.props.fourthImage.src)], Date.now() +
-        // this.props.fourthImage.name,         {             type:
-        // this.props.fourthImage.type,             lastModified: new Date()         }
-        // );     console.log(fourthFileImage);     formData.append('images',
-        // fourthFileImage); }
+        // axios(     {method: 'get', url: this.props.firstImage.src, responseType:
+        // 'arraybuffer'} ).then((response) => {     const file = new File(
+        // [response.data],         Date.now() + this.props.firstImage.name,         {
+        // type: this.props.firstImage.type,             lastModified: new Date() } );
+        // formData.append("images", file);     this         .props .listItem(formData)
+        // });
 
     }
     render() {
