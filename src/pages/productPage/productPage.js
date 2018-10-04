@@ -24,7 +24,7 @@ class productPage extends Component {
                             <div className="container has-text-centered">
                                 <div className="columns is-vcentered is-multiline">
                                     <Carousel
-                                        items={this.props.item.itemImages ? this.props.item.itemImages.reverse() : []}/>
+                                        items={this.props.item.itemImages ? this.props.item.itemImages : []}/>
                                     <div className="column is-6">
                                         <h1 className="title is-2">
                                             {this.props.item.itemName}
