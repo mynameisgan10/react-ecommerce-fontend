@@ -1,23 +1,44 @@
 import * as actions from './actionTypes';
 import axios from "axios";
 
-export const getItems = () => {
+export const getItems = (authenticated) => {
+    console.log(authenticated);
     return dispatch => {
-        axios
-            .get("http://localhost:3000/api/v1/item/categories/1")
-            .then(response => {
-                console.log(response.data);
-                if (response.data.success) {
-                    dispatch(getItemsSuccess(response.data.items));
-                } else {
+        if (authenticated) {
+            axios
+                .get("http://localhost:3000/api/v1/item/categories/1", {
+                    withCredentials: true,
+                    xsrfCookieName: 'xsrf',
+                    xsrfHeaderName: 'X-XSRF-TOKEN'
+                })
+                .then(response => {
+                    if (response.data.success) {
+                        return dispatch(getItemsSuccess(response.data.items))
+                    }
                     dispatch(getItemsFail())
-                }
-            })
-            .catch(err => {
-                dispatch(getItemsFail())
-            })
+                })
+                .catch(err => {
+                    dispatch(getItemsFail())
+                })
+            } else {
+            console.log("else block");
+            axios
+                .get("http://localhost:3000/api/v1/item/categories/1")
+                .then(response => {
+                    console.log(response.data);
+                    if (response.data.success) {
+                        return dispatch(getItemsSuccess(response.data.items));
+                    }
+                    dispatch(getItemsFail())
 
-        }
+                })
+                .catch(err => {
+                    dispatch(getItemsFail())
+                })
+
+            }
+    }
+
 };
 
 const getItemsSuccess = (items) => {
@@ -35,10 +56,10 @@ export const getSingleItem = (itemid) => {
             .then(response => {
                 if (response.data.success) {
                     console.log("got single item");
-                    dispatch(getSingleItemSuccess(response.data.item[0]))
-                } else {
-                    dispatch(getSingleItemFail())
+                    return dispatch(getSingleItemSuccess(response.data.item[0]))
                 }
+                dispatch(getSingleItemFail())
+
             })
             .catch(err => {
                 dispatch(getSingleItemFail())
@@ -53,7 +74,7 @@ const getSingleItemFail = () => {
     return {type: actions.GET_SINGLE_ITEM_FAIL}
 }
 
-export const likeItem = (itemid,index) => {
+export const likeItem = (itemid, index) => {
     console.log(index);
     return dispatch => {
         axios
@@ -80,7 +101,7 @@ const likeItemFail = () => {
     return {type: actions.LIKE_ITEM_FAIL, itemIndex: index}
 }
 
-export const saveItem = (itemid,index) => {
+export const saveItem = (itemid, index) => {
     console.log(index);
     return dispatch => {
         axios

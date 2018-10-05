@@ -6,11 +6,12 @@ import * as actions from "../../store/actions/index";
 
 class homePage extends Component {
     componentDidMount() {
+        console.log(this.props.authenticated);
         this
             .props
-            .getItems();
+            .getItems(this.props.authenticated);
 
-            //get items to compare whether the user has liked or saved the items;
+        //get items to compare whether the user has liked or saved the items;
     }
 
     render() {
@@ -29,11 +30,11 @@ class homePage extends Component {
 
 };
 const mapStateToProps = state => {
-    return {currentItems: state.item.currentItems}
+    return {currentItems: state.item.currentItems, authenticated: state.user.authenticated}
 }
 const mapDispatchToProps = dispatch => {
     return {
-        getItems: () => dispatch(actions.getItems())
+        getItems: (authenticated) => dispatch(actions.getItems(authenticated))
     }
 
 }
