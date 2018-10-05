@@ -63,3 +63,7 @@ export const LIST_NEW_ITEM = 'LIST_NEW_ITEM';
 export const LIST_NEW_ITEM_SUCCESS = 'LIST_NEW_ITEM_SUCCESS';
 export const LIST_NEW_ITEM_FAIL = 'LIST_NEW_ITEM_FAIL';
 export const RESET_NEW_ITEM_FORM = 'RESET_NEW_ITEM_FORM';
+
+// item slides 
+export const NEXT_SLIDE = 'NEXT_SLIDE';
+export const PREVIOUS_SLIDE = 'PREVIOUS_SLIDE';

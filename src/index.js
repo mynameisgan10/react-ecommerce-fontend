@@ -9,6 +9,7 @@ import item from "./store/reducers/item";
 import newItem from "./store/reducers/newItem";
 import loginForm from "./store/reducers/loginForm";
 import profile from "./store/reducers/profile";
+import itemSlides from "./store/reducers/itemSlides";
 import {createStore, compose, applyMiddleware, combineReducers} from 'redux';
 import thunk from 'redux-thunk';
 
@@ -18,7 +19,8 @@ const reducers = combineReducers({
     item: item,
     newItem: newItem,
     loginForm: loginForm,
-    profile: profile
+    profile: profile,
+    itemSlides: itemSlides
 });
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));

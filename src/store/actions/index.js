@@ -37,3 +37,8 @@ export {
     getUserProfile,
     deleteItem
 } from "./profile"
+
+export {
+    nextSlide,
+    previousSlide
+} from "./itemSlides"
