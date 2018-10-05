@@ -4,40 +4,26 @@ import axios from "axios";
 export const getItems = (authenticated) => {
     console.log(authenticated);
     return dispatch => {
-        if (authenticated) {
-            axios
-                .get("http://localhost:3000/api/v1/item/categories/1", {
-                    withCredentials: true,
-                    xsrfCookieName: 'xsrf',
-                    xsrfHeaderName: 'X-XSRF-TOKEN'
-                })
-                .then(response => {
-                    if (response.data.success) {
-                        return dispatch(getItemsSuccess(response.data.items))
-                    }
-                    dispatch(getItemsFail())
-                })
-                .catch(err => {
-                    dispatch(getItemsFail())
-                })
-            } else {
-            console.log("else block");
-            axios
-                .get("http://localhost:3000/api/v1/item/categories/1")
-                .then(response => {
-                    console.log(response.data);
-                    if (response.data.success) {
-                        return dispatch(getItemsSuccess(response.data.items));
-                    }
-                    dispatch(getItemsFail())
 
-                })
-                .catch(err => {
-                    dispatch(getItemsFail())
-                })
+        axios
+            .get("http://localhost:3000/api/v1/item/categories/1", {
+                withCredentials: true,
+                xsrfCookieName: 'xsrf',
+                xsrfHeaderName: 'X-XSRF-TOKEN'
+            })
+            .then(response => {
+                console.log(response.data);
+                if (response.data.success) {
+                    return dispatch(getItemsSuccess(response.data.items));
+                }
+                dispatch(getItemsFail())
 
-            }
-    }
+            })
+            .catch(err => {
+                dispatch(getItemsFail())
+            })
+
+        }
 
 };
 
